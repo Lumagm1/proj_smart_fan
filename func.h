@@ -13,6 +13,17 @@
 #define LCD_RW  1      // LCD RW  
 #define LCD_EN  2      // LCD EN
 
+// Function prototypes For Servo Motor
+#define LCD_DPRT PORTD // LCD DATA PORT 
+#define LCD_DDDR DDRD  // LCD DATA DDR 
+
+#define LCD_CPRT PORTB // LCD CONTROL PORT 
+#define LCD_CDDR DDRB  // LCD CONTOL DDR 
+
+#define LCD_RS  0      // LCD RS  
+#define LCD_RW  1      // LCD RW  
+#define LCD_EN  2      // LCD EN
+
 // Function prototypes
 
 // LCD Functions
@@ -25,7 +36,7 @@ void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print(unsigned char * str);
 
 // Joystick Functions
-void initADC();
+void init_joystick_ADC();
 
 // Temperature Sensor
 void init_TS_IO();
@@ -35,8 +46,7 @@ void init_SM_IO();
 void initTimer0();
 
 //DC Fan Motor
-void initIO();
-void initTimer0();
-void initUART();
+void init_DC_IO();
+void initTimer1();
 
 #endif
