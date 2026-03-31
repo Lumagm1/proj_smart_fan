@@ -1,2 +1,2 @@
 # proj_smart_fan
-Adam &amp; Miko's Smart Fan
+Adam ❤️ Miko's Smart Fan
