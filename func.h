@@ -34,6 +34,7 @@ void lcdData(unsigned char data);
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);  
 void lcd_print(unsigned char * str);
+void lcd_i2c(unsigned char data);
 
 // Joystick Functions
 void init_joystick_ADC();
@@ -48,5 +49,14 @@ void initTimer0();
 //DC Fan Motor
 void init_DC_IO();
 void initTimer1();
+
+void i2c(unsigned char data, unsigned char address);
+void i2c_init();
+void i2c_start();
+void i2c_write(unsigned char data);
+unsigned char i2c_read_ack();
+unsigned char i2c_read_nack();
+void i2c_stop();
+
 
 #endif

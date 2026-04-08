@@ -1,6 +1,8 @@
 #include "func.h"
 #include <avr/io.h>
 
+#define LCD_ADDR 0x27 // I2C address of the LCD
+
 void lcdCommanda (unsigned char cmnd) {  
 	LCD_DPRT = cmnd;				// Send cmnd to data port  
 	
@@ -50,3 +52,13 @@ void lcd_print(unsigned char * str) {
 		i++;  
 	}
 } 
+
+
+
+void lcd_i2c(unsigned char data) {
+	i2c_init();
+	i2c_start();
+	i2c_write((LCD_ADDR << 1) | 0); // Write address
+	i2c_write(data); // Write data
+	i2c_stop();
+}
