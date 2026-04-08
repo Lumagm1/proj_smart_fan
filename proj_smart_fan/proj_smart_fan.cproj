@@ -120,8 +120,33 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dcmotor.c">
+      <SubType>compile</SubType>
+      <Link>dcmotor.c</Link>
+    </Compile>
+    <Compile Include="func.h">
+      <SubType>compile</SubType>
+      <Link>func.h</Link>
+    </Compile>
+    <Compile Include="joystick.c">
+      <SubType>compile</SubType>
+      <Link>joystick.c</Link>
+    </Compile>
+    <Compile Include="lcd.c">
+      <SubType>compile</SubType>
+      <Link>lcd.c</Link>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
+      <Link>main.c</Link>
+    </Compile>
+    <Compile Include="servo.c">
+      <SubType>compile</SubType>
+      <Link>servo.c</Link>
+    </Compile>
+    <Compile Include="temp.c">
+      <SubType>compile</SubType>
+      <Link>temp.c</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

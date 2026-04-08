@@ -43,10 +43,10 @@ void init_TS_IO();
 
 // Servo Motor 
 void init_SM_IO();
-void initTimer0();
+void initTimer1();
 
 //DC Fan Motor
 void init_DC_IO();
-void initTimer1();
+void initTimer0();
 
 #endif
