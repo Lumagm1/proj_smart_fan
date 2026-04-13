@@ -28,15 +28,12 @@ void i2c_init(){
 void i2c_start(){
     TWCR0 = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
     while (!(TWCR0 & (1<<TWINT)));
-
- 
 }
 
 void i2c_address(unsigned char address){
     TWDR0 = address;
     TWCR0 = (1<<TWINT)|(1<<TWEN);
     while (!(TWCR0 & (1 << TWINT)));
-
 }
 
 void i2c_data(unsigned char data){
@@ -45,9 +42,8 @@ void i2c_data(unsigned char data){
     while (!(TWCR0 & (1 << TWINT)));
 }
 
-
 void i2c_stop(){
-    TWCR0 = (1<<TWINT)|(1<<TWEN)|(1<<TWSTO);
+    TWCR0 = (1<<TWINT)|(1<<TWEN)|(1<<TWSTO); // Turns off TWI/I2c by clearing twint, twen, and twisto
 }
 
 void i2c(unsigned char data, unsigned char address){

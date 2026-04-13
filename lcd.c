@@ -5,10 +5,10 @@
 
 #define LCD_ADDR 0x27 // I2C address of the LCD
 
-void lcdCommanda (unsigned char cmnd) {  
+void lcdCommanda (unsigned char cmnd) {  // LCD modes
 	lcd_send(cmnd, 0); // Send command with RS = 0
 }
-void lcdData(unsigned char data) {  
+void lcdData(unsigned char data) {  // LCD characters
 	lcd_send(data, LCD_RS); // Send data with RS = 1
 } 
 
@@ -41,7 +41,7 @@ void lcd_init() {
 	 _delay_us(50);
 } 
  
-void lcd_gotoxy(unsigned char x, unsigned char y) {  
+void lcd_gotoxy(unsigned char x, unsigned char y) {  // Set cursor position, x is column (1-16), y is row (1-4)
 	unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};   
 	
 	lcdCommanda(firstCharAdr[y-1] + x -1);  
@@ -57,19 +57,15 @@ void lcd_print(unsigned char * str) {
 	}
 } 
 
-
-
-
-
-
-void lcd_expander_write(int data) {
+//I2C LCD Communication Functions, these are used to send commands and data to the LCD via I2C
+void lcd_expander_write(int data) { // This function writes a byte to the LCD via I2C
 	i2c_start();
 	i2c_address((LCD_ADDR << 1) | 0); // Write address
 	i2c_data(data); // Write data
 	i2c_stop();
 }
 
-void pulse_enable(int data)
+void pulse_enable(int data) // essentially enable low -> enable high -> enable low, this is used to latch the data into the LCD
 {
 	lcd_expander_write(data & ~LCD_EN); // EN = 0, data lines set
 	_delay_us(1);
@@ -86,10 +82,8 @@ void lcd_write4bits(int data)
 
 void lcd_send(int value, int rs)
 {
-	
-	lcd_write4bits(((value & 0xF0) | LCD_BL | rs) & ~LCD_RW);
+	lcd_write4bits(((value & 0xF0) | LCD_BL | rs) & ~LCD_RW); 		// Send upper bits in the 4-bit mode
 	_delay_ms(1);
-	lcd_write4bits((((value & 0x0F) << 4) | LCD_BL | rs) & ~LCD_RW);
+	lcd_write4bits((((value & 0x0F) << 4) | LCD_BL | rs) & ~LCD_RW);	// Send lower bits in the 4-bit mode, the i2c chip will combine the upper and lower bits to form the full command or data byte
 	_delay_us(50);
-	
 }
