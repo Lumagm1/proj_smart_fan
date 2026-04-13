@@ -20,6 +20,8 @@ void ERROR(){
 }
 
 void i2c_init(){
+    TWSR0 = 0x00;          // prescaler = 1
+    TWBR0 = 72;            // 100kHz for 16MHz clock
     TWCR0 = (1<<TWEN);
 }
 
@@ -27,28 +29,23 @@ void i2c_start(){
     TWCR0 = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
     while (!(TWCR0 & (1<<TWINT)));
 
-    if (((TWSR0 & 0xF8) != START) && ((TWSR0 & 0xF8) != REPEATED_START))
-        ERROR();
+ 
 }
 
-void i2c_write(unsigned char data){
+void i2c_address(unsigned char address){
+    TWDR0 = address;
+    TWCR0 = (1<<TWINT)|(1<<TWEN);
+    while (!(TWCR0 & (1 << TWINT)));
+
+}
+
+void i2c_data(unsigned char data){
     TWDR0 = data;
     TWCR0 = (1<<TWINT)|(1<<TWEN);
-    while (!(TWCR0 & (1<<TWINT)));
-    if ((TWSR0 & 0xF8) != MT_DATA_ACK) ERROR();
+    while (!(TWCR0 & (1 << TWINT)));
 }
 
-unsigned char i2c_read_ack(){
-    TWCR0 = (1<<TWINT)|(1<<TWEN)|(1<<TWEA);
-    while (!(TWCR0 & (1<<TWINT)));
-    return TWDR0;
-}
 
-unsigned char i2c_read_nack(){
-    TWCR0 = (1<<TWINT)|(1<<TWEN);
-    while (!(TWCR0 & (1<<TWINT)));
-    return TWDR0;
-}
 void i2c_stop(){
     TWCR0 = (1<<TWINT)|(1<<TWEN)|(1<<TWSTO);
 }
@@ -56,7 +53,7 @@ void i2c_stop(){
 void i2c(unsigned char data, unsigned char address){
     i2c_init();
     i2c_start();
-    i2c_write(address); // Write address
-    i2c_write(data); // Write data
+    i2c_address(address); // Write address
+    i2c_data(data); // Write data
     i2c_stop();
 }
