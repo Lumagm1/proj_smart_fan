@@ -47,6 +47,7 @@ void initTimer1();
 
 //DC Fan Motor
 void init_DC_IO();
-void initTimer0();
+void initTimer3();
+void initTimer4();
 
 #endif
