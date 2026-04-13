@@ -9,6 +9,6 @@
 
 
 int main(void) {
-
+	init_DC_IO();
 }
  

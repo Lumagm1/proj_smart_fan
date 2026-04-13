@@ -1,4 +1,4 @@
-#include "func.h"
+//#include "func.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -7,17 +7,20 @@
 uint8_t tachCount = 0;
 
 void init_DC_IO() {
-	DDRB |= (1 << PINB3);	//PWM Output
+	DDRD |= (1 << PIND0);	//PWM Output
 	DDRD &= ~(1 << PIND2);	//Tach Input
-	initTimer2();
+	initTimer3();
 }
 
-void initTimer2() {
-	TCCR2A |= (1 << COM2A0) | (1 << WGM20) | (1 << WGM21);
-	TCCR2B |= 
+void initTimer3() {
+	TCCR3A |= (1 << COM3A1) | (1 << WGM31);		//OCR3A Clear on match; Fast PWM ICR3 Mode
+	TCCR3B |= (1 << WGM32)  | (1 << WGM33) | (1 << CS30);	//No Prescaler
+	ICR3 = 639; // f_clk/f_pwm - 1 = 639 (25khz Clock)
+	OCR3A = 200;
+	TCNT3 = 0;	// Start Clock
 }
 
-ISR(TIMER2_COMPA_vect) {
+ISR(TIMER3_COMPA_vect) {
 	
 }
 
