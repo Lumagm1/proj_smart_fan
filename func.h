@@ -3,6 +3,7 @@
 
 // your declarations go here
 
+#include <stdint.h>
 #define LCD_RS (1 << 0)
 #define LCD_RW (1 << 1)
 #define LCD_EN (1 << 2)
@@ -16,6 +17,7 @@ void lcdData(unsigned char data);
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);  
 void lcd_print(unsigned char * str);
+void lcd_clear();
 
 void lcd_expander_write(int data);
 void pulse_enable(int data);
@@ -25,6 +27,11 @@ void lcd_send(int value,int rs);
 
 // Joystick Functions
 void init_joystick_ADC();
+uint8_t data_joystick_X();
+uint8_t data_joystick_Y();
+
+void init_joystick_button();
+uint8_t data_joystick_button();
 
 // Temperature Sensor
 void init_TS_IO();
