@@ -85,9 +85,6 @@ int main(void) {
     unsigned char prompt_down[]   = "Down            ";
     unsigned char prompt_press[]  = "Pressed         ";
 
-    const uint8_t left_threshold  = 50;
-    const uint8_t right_threshold = 200;
-
     char line2[17];
     unsigned char *message = prompt_center;
     unsigned char *last_message = 0;
@@ -95,24 +92,23 @@ int main(void) {
     lcd_init();
     init_joystick_ADC();
     init_joystick_button();
-
+    uint8_t x,y;
     while (1) {
-        uint8_t x = data_joystick_X();
-        uint8_t y = data_joystick_Y();
-
+        data_joystick_XY(&x, &y);
+        Direction direction = get_js_diretion(x, y);
         if (data_joystick_button()) {
             message = prompt_press;
         }
-        else if (x < left_threshold && y >= left_threshold && y <= right_threshold) {
+        else if (direction == LEFT) {
             message = prompt_left;
         }
-        else if (x > right_threshold && y >= left_threshold && y <= right_threshold) {
+        else if (direction == RIGHT) {
             message = prompt_right;
         }
-        else if (y < left_threshold && x >= left_threshold && x <= right_threshold) {
+        else if (direction == UP) {
             message = prompt_up;
         }
-        else if (y > right_threshold && x >= left_threshold && x <= right_threshold) {
+        else if (direction == DOWN) {
             message = prompt_down;
         }
         else {
@@ -130,6 +126,7 @@ int main(void) {
         lcd_print((unsigned char *)line2);
 
         _delay_ms(100);
+        
     }
 
     return 0;

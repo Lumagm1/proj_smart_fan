@@ -59,7 +59,7 @@ Direction get_js_diretion(uint8_t x, uint8_t y) {
 }
 void data_joystick_XY(uint8_t *x, uint8_t *y) { // Return the latest X and Y values with some averaging
     cli(); // Disable interrupts to safely read shared variables
-     uint16_t sx = x_value;
+    uint16_t sx = x_value;
     uint16_t sy = y_value;
 	sei(); // Re-enable interrupts after reading
 
