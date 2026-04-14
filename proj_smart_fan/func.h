@@ -35,7 +35,8 @@ void initTimer0();
 
 //DC Fan Motor
 void init_DC_IO();
-void initTimer1();
+void initTimer3();
+void initTimer4();
 
 void i2c(unsigned char data, unsigned char address);
 void i2c_init();
