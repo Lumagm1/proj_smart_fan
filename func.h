@@ -3,38 +3,25 @@
 
 // your declarations go here
 
-#define LCD_DPRT PORTD // LCD DATA PORT 
-#define LCD_DDDR DDRD  // LCD DATA DDR 
-
-#define LCD_CPRT PORTB // LCD CONTROL PORT 
-#define LCD_CDDR DDRB  // LCD CONTOL DDR 
-
-#define LCD_RS  0      // LCD RS  
-#define LCD_RW  1      // LCD RW  
-#define LCD_EN  2      // LCD EN
-
-// Function prototypes For Servo Motor
-#define LCD_DPRT PORTD // LCD DATA PORT 
-#define LCD_DDDR DDRD  // LCD DATA DDR 
-
-#define LCD_CPRT PORTB // LCD CONTROL PORT 
-#define LCD_CDDR DDRB  // LCD CONTOL DDR 
-
-#define LCD_RS  0      // LCD RS  
-#define LCD_RW  1      // LCD RW  
-#define LCD_EN  2      // LCD EN
+#define LCD_RS (1 << 0)
+#define LCD_RW (1 << 1)
+#define LCD_EN (1 << 2)
+#define LCD_BL (1 << 3)
 
 // Function prototypes
 
 // LCD Functions
-void init_LCD_IO();
-void blinkLED();
 void lcdCommanda (unsigned char cmnd);
 void lcdData(unsigned char data);
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);  
 void lcd_print(unsigned char * str);
-void lcd_i2c(unsigned char data);
+
+void lcd_expander_write(int data);
+void pulse_enable(int data);
+void lcd_write4bits(int data);
+void lcd_send(int value,int rs);
+
 
 // Joystick Functions
 void init_joystick_ADC();
@@ -53,9 +40,8 @@ void initTimer1();
 void i2c(unsigned char data, unsigned char address);
 void i2c_init();
 void i2c_start();
-void i2c_write(unsigned char data);
-unsigned char i2c_read_ack();
-unsigned char i2c_read_nack();
+void i2c_address(unsigned char data);
+void i2c_data(unsigned char data);
 void i2c_stop();
 
 
