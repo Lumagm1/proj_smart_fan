@@ -2,14 +2,15 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
-	uint8_t channel = 0; // ADC0 for X-axis, ADC1 for Y-axis
-	volatile uint8_t x_value; // Global variable to store the ADC value, volatile because it's modified in an ISR
-	volatile uint8_t y_value; // Global variable to store the ADC value, volatile because it's modified in an ISR
+	volatile uint8_t channel = 0; // ADC0 for X-axis, ADC1 for Y-axis
+	volatile uint8_t x_value = 128; // Global variable to store the ADC value, volatile because it's modified in an ISR
+	volatile uint8_t y_value = 128; // Global variable to store the ADC value, volatile because it's modified in an ISR
 	volatile uint8_t discard_sample = 0;
 void init_joystick_ADC() {
-	ADMUX = 1;	// use ADC1
+	ADMUX = 0;
 	ADMUX |= (1 << REFS0);									// Use AVcc as the reference
 	ADMUX |= (1 << ADLAR);									// Left-align for 8-bit resolution
+	ADCSRA = 0;
 	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 	// 128 prescale for 16 MHz
 	ADCSRA |= (1 << ADATE);  								// Set ADC Auto Trigger Enable (ATE)
 	ADCSRB = 0;												// 0 for free running mode
@@ -18,8 +19,6 @@ void init_joystick_ADC() {
 	ADCSRA |= (1 << ADIE);									// Enable ADC Interrupt
 	 discard_sample = 0;
 	sei();													// Enable global interrupts
-	
-	
 }
 
 uint8_t data_joystick_X() {
@@ -28,6 +27,48 @@ uint8_t data_joystick_X() {
 
 uint8_t data_joystick_Y() {
 	return y_value; // Return the latest Y-axis value
+}
+
+Direction get_js_diretion(uint8_t x, uint8_t y) {
+	static Direction last = CENTER; // Store the last direction to avoid rapid changes
+	
+	//thresholds for direction
+
+	const uint8_t trigger = 210;  // Adjust as needed
+	const uint8_t release = 180; // Adjust as needed
+	const uint8_t guard = 220; // Adjust as needed
+
+	Direction next = last; // Default to last direction
+
+	if		  ( x < (255 - trigger) && y > (255 - guard) && y < guard) {
+		next = LEFT;
+	} else if ( x > trigger && y > (255 - guard) && y < guard) {
+		next = RIGHT;
+	} else if ( y < (255 - trigger) && x > (255 - guard) && x < guard) {
+		next = DOWN;
+	} else if ( y > trigger && x > (255 - guard) && x < guard) {
+		next = UP;
+	} else if (last != CENTER) {
+		// If joystick is released back to center, only change direction if it was previously not in center
+		if (x > (255 - release) && x < release && y > (255 - release) && y < release) {
+			next = CENTER;
+		}
+	}
+	last = next; // Update last direction
+	return next;
+}
+void data_joystick_XY(uint8_t *x, uint8_t *y) { // Return the latest X and Y values with some averaging
+    cli(); // Disable interrupts to safely read shared variables
+     uint16_t sx = x_value;
+    uint16_t sy = y_value;
+	sei(); // Re-enable interrupts after reading
+
+	static uint16_t avg_x = 128, avg_y = 128;
+    avg_x = (avg_x * 7 + sx) / 4;
+    avg_y = (avg_y * 7 + sy) / 4;
+	*x = (uint8_t)avg_x;
+	*y = (uint8_t)avg_y;
+  
 }
 
 void init_joystick_button() {
@@ -48,14 +89,16 @@ ISR(ADC_vect) {
 	if(channel == 0){
 		x_value = ADCH;	// only read the high value for 8 bit
 		channel = 1;	// switch to ADC1 for Y-axis
-		ADMUX = (ADMUX & 0xF0) | 1;   // switch to ADC1
 		discard_sample = 1;
+		ADMUX = (ADMUX & 0xF0) | 1;   // switch to ADC1
+		
 	}
 	else{
 		y_value = ADCH;	// only read the high value for 8 bit
 		channel = 0;	// switch back to ADC0 for X-axis
-		ADMUX = (ADMUX & 0xF0) | 0;   // switch to ADC0
 		discard_sample = 1;
+		ADMUX = (ADMUX & 0xF0) | 0;   // switch to ADC0
+		
 	}
 }
 
