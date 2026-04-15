@@ -5,6 +5,7 @@
 
 // your declarations go here
 
+#include <stdint.h>
 #define LCD_RS (1 << 0)
 #define LCD_RW (1 << 1)
 #define LCD_EN (1 << 2)
@@ -13,20 +14,33 @@
 // Function prototypes
 
 // LCD Functions
-// void lcdCommanda (unsigned char cmnd);
-// void lcdData(unsigned char data);
-// void lcd_init();
-// void lcd_gotoxy(unsigned char x, unsigned char y);  
-// void lcd_print(unsigned char * str);
-// 
-// void lcd_expander_write(int data);
-// void pulse_enable(int data);
-// void lcd_write4bits(int data);
-// void lcd_send(int value,int rs);
+void lcdCommanda (unsigned char cmnd);
+void lcdData(unsigned char data);
+void lcd_init();
+void lcd_gotoxy(unsigned char x, unsigned char y);  
+void lcd_print(unsigned char * str);
+void lcd_clear();
+
+void lcd_expander_write(int data);
+void pulse_enable(int data);
+void lcd_write4bits(int data);
+void lcd_send(int value,int rs);
 
 
 // Joystick Functions
-//void init_joystick_ADC();
+typedef enum {UP,DOWN,LEFT,RIGHT,CENTER
+} Direction;
+void init_ADC(unsigned char identifier);
+void stop_ADC();
+void start_temp_ADC();
+void start_joystick_ADC();
+uint16_t data_joystick_X();
+uint16_t data_joystick_Y();
+Direction get_js_direction(uint16_t x, uint16_t y);
+void data_joystick_XY(uint16_t *x, uint16_t *y);
+void init_joystick_button();
+uint8_t data_joystick_button();
+
 
 // Temperature Sensor
 //void init_TS_IO();
