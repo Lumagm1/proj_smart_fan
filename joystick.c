@@ -3,9 +3,9 @@
 #include <avr/interrupt.h>
 #include <stdint.h>
 	volatile uint8_t channel = 0; // ADC0 for X-axis, ADC1 for Y-axis
-	volatile uint8_t x_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
-	volatile uint8_t y_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
-	volatile uint8_t discard_sample = 0;
+	volatile uint16_t x_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
+	volatile uint16_t y_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
+	volatile uint8_t discard_sample = 0; //
 void init_joystick_ADC() {
 	ADMUX = 0;
 	ADMUX |= (1 << REFS0);									// Use AVcc as the reference
@@ -21,22 +21,22 @@ void init_joystick_ADC() {
 	sei();													// Enable global interrupts
 }
 
-uint8_t data_joystick_X() {
+uint16_t data_joystick_X() {
 	return x_value; // Return the latest X-axis value
 }
 
-uint8_t data_joystick_Y() {
+uint16_t data_joystick_Y() {
 	return y_value; // Return the latest Y-axis value
 }
 
-Direction get_js_diretion(uint8_t x, uint8_t y) {
+Direction get_js_direction(uint16_t x, uint16_t y) {
 	static Direction last = CENTER; // Store the last direction to avoid rapid changes
 	
 	//thresholds for direction
 
-	const uint8_t trigger = 768;  // Adjust as needed
-	const uint8_t release = 650; // Adjust as needed
-	const uint8_t guard = 850; // Adjust as needed
+	const uint16_t trigger = 768;  // Adjust as needed
+	const uint16_t release = 650; // Adjust as needed
+	const uint16_t guard = 850; // Adjust as needed
 
 	Direction next = last; // Default to last direction
 
@@ -57,17 +57,17 @@ Direction get_js_diretion(uint8_t x, uint8_t y) {
 	last = next; // Update last direction
 	return next;
 }
-void data_joystick_XY(uint8_t *x, uint8_t *y) { // Return the latest X and Y values with some averaging
+void data_joystick_XY(uint16_t *x, uint16_t *y) { // Return the latest X and Y values with some averaging
     cli(); // Disable interrupts to safely read shared variables
     uint16_t sx = x_value;
     uint16_t sy = y_value;
 	sei(); // Re-enable interrupts after reading
 
 	static uint16_t avg_x = 512, avg_y = 512;
-    avg_x = (avg_x * 7 + sx) / 4;
-    avg_y = (avg_y * 7 + sy) / 4;
-	*x = (uint8_t)avg_x;
-	*y = (uint8_t)avg_y;
+    avg_x = (avg_x * 7 + sx) / 8;
+    avg_y = (avg_y * 7 + sy) / 8;
+	*x = avg_x;
+	*y = avg_y;
   
 }
 
@@ -88,19 +88,17 @@ ISR(ADC_vect) {
     }
 	if(channel == 0){
 		x_value = ADCL;	// only read the high value for 10 bit
-		x_value = ADCH;
+		x_value |= ((uint16_t)ADCH << 8);
 		channel = 1;	// switch to ADC1 for Y-axis
-		discard_sample = 1;
 		ADMUX = (ADMUX & 0xF0) | 1;   // switch to ADC1
-		
+		discard_sample = 1; // Discard the next sample to allow the channel switch to take effect
 	}
 	else{
 		y_value = ADCL;	// only read the high value for 10 bit
-		y_value = ADCH;
+		y_value |= ((uint16_t)ADCH << 8);
 		channel = 0;	// switch back to ADC0 for X-axis
-		discard_sample = 1;
 		ADMUX = (ADMUX & 0xF0) | 0;   // switch to ADC0
-		
+		discard_sample = 1; // Discard the next sample to allow the channel switch to take effect
 	}
 }
 

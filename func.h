@@ -30,10 +30,10 @@ typedef enum {
     UP,DOWN,LEFT,RIGHT,CENTER
 } Direction;
 void init_joystick_ADC();
-uint8_t data_joystick_X();
-uint8_t data_joystick_Y();
-Direction get_js_diretion(uint8_t x, uint8_t y);
-void data_joystick_XY(uint8_t *x, uint8_t *y);
+uint16_t data_joystick_X();
+uint16_t data_joystick_Y();
+Direction get_js_direction(uint16_t x, uint16_t y);
+void data_joystick_XY(uint16_t *x, uint16_t *y);
 void init_joystick_button();
 uint8_t data_joystick_button();
 

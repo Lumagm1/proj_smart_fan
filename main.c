@@ -70,7 +70,7 @@ int main(void) {
 }   
 	*/
 
-	#include <stdint.h>
+#include <stdint.h>
 #include <stdio.h>
 #define F_CPU 16000000UL
 #include "func.h"
@@ -92,10 +92,10 @@ int main(void) {
     lcd_init();
     init_joystick_ADC();
     init_joystick_button();
-    uint8_t x,y;
+    uint16_t x,y;
     while (1) {
         data_joystick_XY(&x, &y);
-        Direction direction = get_js_diretion(x, y);
+        Direction direction = get_js_direction(x, y);
         if (data_joystick_button()) {
             message = prompt_press;
         }
