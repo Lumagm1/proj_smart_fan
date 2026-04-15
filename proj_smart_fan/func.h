@@ -62,12 +62,12 @@ unsigned char getChar();
 void putChar(unsigned char c);
 void putStr(char *str);
 
-// void i2c(unsigned char data, unsigned char address);
-// void i2c_init();
-// void i2c_start();
-// void i2c_address(unsigned char data);
-// void i2c_data(unsigned char data);
-// void i2c_stop();
+ void i2c(unsigned char data, unsigned char address);
+ void i2c_init();
+ void i2c_start();
+ void i2c_address(unsigned char data);
+ void i2c_data(unsigned char data);
+ void i2c_stop();
 
 
 #endif

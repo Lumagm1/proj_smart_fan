@@ -17,7 +17,8 @@ int main(void) {
 	unsigned char prompt5[] = "Center";
 	unsigned char prompt6[] = "Up";
 	unsigned char prompt7[] = "Down";
-	unsigned char prompt8[] = "Button Pressed";
+	unsigned char prompt8[] = "On";
+    unsigned char prompt9[] = "Off";
 	uint16_t x,y;
 	
 
@@ -49,25 +50,22 @@ int main(void) {
     static unsigned char *last_message = 0; // Store the last displayed message
 
 		
-    if (data_joystick_button()) {
+    if (data_joystick_button()) { // if the button is pressed 
+        lcd_clear();
+        lcd_gotoxy(1,1);
+        lcd_print(message);
         message = prompt8;
-    }
-    else if (direction == LEFT) {
-        message = prompt3;
-    }
-    else if (direction == RIGHT) {
-        message = prompt4;
-    }
-    else if (direction == UP) {
-        message = prompt6;
-    }
-    else if (direction == DOWN) {
-        message = prompt7;
-    }
-    else {
-        message = prompt5;
-    }
+        _delay_ms(500); // Debounce delay
+    } 
 
+    if (!data_joystick_button()) { // If the button is released
+        lcd_clear();
+        lcd_gotoxy(1,1);
+        lcd_print(message);
+        message = prompt9;
+        _delay_ms(500); // Debounce delay
+    }
+    
     if (message != last_message) {
         lcd_clear();
         lcd_gotoxy(1,1);
