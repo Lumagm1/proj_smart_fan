@@ -1,6 +1,8 @@
 #ifndef FUNC_H
 #define FUNC_H
 
+#include <stdint.h>
+
 // your declarations go here
 
 #include <stdint.h>
@@ -39,23 +41,33 @@ void data_joystick_XY(uint16_t *x, uint16_t *y);
 void init_joystick_button();
 uint8_t data_joystick_button();
 
+
 // Temperature Sensor
-void init_TS_IO();
+//void init_TS_IO();
 
 // Servo Motor 
-void init_SM_IO();
-void initTimer0();
+//void init_SM_IO();
+//void initTimer0();
 
 //DC Fan Motor
 void init_DC_IO();
-void initTimer1();
+void initTimer3();
+void initTimer4();
+//int tachRPM;
+//uint8_t tachCount;
 
-void i2c(unsigned char data, unsigned char address);
-void i2c_init();
-void i2c_start();
-void i2c_address(unsigned char data);
-void i2c_data(unsigned char data);
-void i2c_stop();
+//UART Debug
+void initUART();
+unsigned char getChar();
+void putChar(unsigned char c);
+void putStr(char *str);
+
+// void i2c(unsigned char data, unsigned char address);
+// void i2c_init();
+// void i2c_start();
+// void i2c_address(unsigned char data);
+// void i2c_data(unsigned char data);
+// void i2c_stop();
 
 
 #endif
