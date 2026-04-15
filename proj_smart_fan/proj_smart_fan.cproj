@@ -134,13 +134,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adc.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="dcmotor.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="i2c.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="joystick.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lcd.c">
@@ -150,9 +150,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="servo.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="temp.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart_dbug.c">
