@@ -26,10 +26,12 @@ void lcd_send(int value,int rs);
 
 
 // Joystick Functions
-typedef enum {
-    UP,DOWN,LEFT,RIGHT,CENTER
+typedef enum {UP,DOWN,LEFT,RIGHT,CENTER
 } Direction;
-void init_joystick_ADC();
+void init_ADC(unsigned char identifier);
+void stop_ADC();
+void start_temp_ADC();
+void start_joystick_ADC();
 uint16_t data_joystick_X();
 uint16_t data_joystick_Y();
 Direction get_js_direction(uint16_t x, uint16_t y);
