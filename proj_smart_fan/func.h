@@ -53,8 +53,9 @@ uint8_t data_joystick_button();
 void init_DC_IO();
 void initTimer3();
 void initTimer4();
-//int tachRPM;
-//uint8_t tachCount;
+
+void startFan();
+void stopFan();
 
 //UART Debug
 void initUART();

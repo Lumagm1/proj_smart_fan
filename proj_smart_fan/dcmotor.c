@@ -33,7 +33,7 @@ void initTimer3() {
 	TCCR3A = (1 << COM3B1) | (1 << WGM31);					//OCR3B Clear on match; Fast PWM ICR3 Mode
 	TCCR3B = (1 << WGM32)  | (1 << WGM33) | (1 << CS30);	//No Prescaler
 	ICR3 = 639;												// f_cpu/f_pwm - 1 = 639 (25khz Clock)
-	OCR3B = 200;
+	OCR3B = 0;
 	TCNT3 = 0;	// Start Clock
 }
 
@@ -46,6 +46,13 @@ void initTimer4() {
 	TCNT4 = 0;	// Start Clock
 }
 
+void startFan() {
+	OCR3B = 639;
+}
+
+void stopFan() {
+	OCR3B = 0;
+}
 
 ISR(TIMER4_COMPA_vect) {
 	tachRPM = 30 * (tachCount);
