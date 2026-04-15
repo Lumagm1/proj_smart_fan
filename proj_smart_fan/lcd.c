@@ -57,6 +57,11 @@ void lcd_print(unsigned char * str) {
 	}
 } 
 
+void lcd_clear() {  
+	lcdCommanda(0x01); // Clear display command
+	_delay_ms(2); // Wait for the command to execute
+}
+
 //I2C LCD Communication Functions, these are used to send commands and data to the LCD via I2C
 void lcd_expander_write(int data) { // This function writes a byte to the LCD via I2C
 	i2c_start();
