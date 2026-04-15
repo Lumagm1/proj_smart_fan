@@ -38,6 +38,12 @@ void init_DC_IO();
 void initTimer3();
 void initTimer4();
 
+//UART Debug
+void initUART();
+unsigned char getChar();
+void putChar(unsigned char c);
+void putStr(char *str);
+
 void i2c(unsigned char data, unsigned char address);
 void i2c_init();
 void i2c_start();
