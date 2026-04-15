@@ -23,6 +23,7 @@ int main(void) {
 
 	lcd_init();  
 	init_ADC(0); // Initialize ADC for joystick
+    init_joystick_button();
     int check = 1;
     while (check) {
         data_joystick_XY(&x, &y);
@@ -38,9 +39,8 @@ int main(void) {
     }
  
     
-    lcd_init();
-    init_joystick_ADC();
-    init_joystick_button();
+\
+    
     
     while (1) {
         data_joystick_XY(&x, &y);

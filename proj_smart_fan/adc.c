@@ -10,7 +10,7 @@
 	volatile uint8_t tempvalue ; // Global variable to store the ADC value, volatile because it's
 
 void init_ADC(unsigned char identifier) {
-	input_mode = identifier; // Store the input mode (0 for joystick, 1 for temperature sensor)
+	channel = identifier; // Store the input mode (0 for joystick, 1 for temperature sensor)
 	if (channel == 0) {
 		// Initialize ADC for joystick
 		ADMUX = 0;	// use ADC0
