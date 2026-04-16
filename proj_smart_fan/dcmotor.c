@@ -9,7 +9,6 @@
 
 uint8_t tachCount = 0;
 int tachRPM = 0;
-int temp = 0;
 
 void init_DC_IO() {
 	DDRD |= (1 << PIND2);	//PWM Output
@@ -54,19 +53,24 @@ void stopFan() {
 	OCR3B = 0;
 }
 
+void setFan(int target) {
+	OCR3B = target * 6.39;
+}
+
 ISR(TIMER4_COMPA_vect) {
+	int rpm = 0;
 	tachRPM = 30 * (tachCount);
 	tachCount = 0;
 
-	temp = tachRPM;
+	rpm = tachRPM;
 	putStr("\r\nFan Speed ");
-	putChar((uint8_t)(temp/1000) + '0');
-	temp = temp%1000;
-	putChar((uint8_t)(temp/100) + '0');
-	temp = temp%100;
-	putChar((uint8_t)(temp/10) + '0');
-	temp = temp%10;
-	putChar((uint8_t)(temp) + '0');
+	putChar((uint8_t)(rpm/1000) + '0');
+	rpm = rpm%1000;
+	putChar((uint8_t)(rpm/100) + '0');
+	rpm = rpm%100;
+	putChar((uint8_t)(rpm/10) + '0');
+	rpm = rpm%10;
+	putChar((uint8_t)(rpm) + '0');
 }
 
 ISR(INT1_vect) {
