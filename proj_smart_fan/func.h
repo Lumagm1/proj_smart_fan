@@ -1,11 +1,9 @@
 #ifndef FUNC_H
 #define FUNC_H
 
-#include <stdint.h>
-
 // your declarations go here
-
 #include <stdint.h>
+
 #define LCD_RS (1 << 0)
 #define LCD_RW (1 << 1)
 #define LCD_EN (1 << 2)

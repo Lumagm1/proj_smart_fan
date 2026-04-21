@@ -9,6 +9,9 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
+            ],
+            "compileCommands": [
+                "${workspaceFolder}/_build/proj_smart_fan/Debug/compile_commands.json"
             ]
         }
     ],
