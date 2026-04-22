@@ -1,0 +1,4 @@
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Release/CMakeFiles/proj_smart_fan_Release_Release_avr_gcc_compile.dir
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Release/CMakeFiles/proj_smart_fan_Release_image_eKbMMT0l.dir
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Release/CMakeFiles/edit_cache.dir
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Release/CMakeFiles/rebuild_cache.dir

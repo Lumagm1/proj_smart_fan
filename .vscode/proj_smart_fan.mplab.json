@@ -1,0 +1,301 @@
+{
+    "importedFrom": "proj_smart_fan\\proj_smart_fan.cproj",
+    "version": "1.9",
+    "configurations": [
+        {
+            "name": "Release",
+            "id": "",
+            "device": "ATmega328PB",
+            "imageType": "application",
+            "imagePath": "./out/proj_smart_fan/Release.elf",
+            "toolProperties": "Release-Simulator",
+            "tool": "mEDBG",
+            "packs": [
+                {
+                    "name": "ATmega_DFP",
+                    "vendor": "Microchip",
+                    "version": "3.6.299"
+                }
+            ],
+            "fileSet": "Release files",
+            "toolchain": "Release-avr-gcc",
+            "userVariables": "Release-uservariables"
+        },
+        {
+            "name": "Debug",
+            "device": "ATmega328PB",
+            "imageType": "application",
+            "imagePath": "./out/proj_smart_fan/Debug.elf",
+            "toolProperties": "Debug-Simulator",
+            "tool": "Simulator",
+            "packs": [
+                {
+                    "name": "ATmega_DFP",
+                    "vendor": "Microchip",
+                    "version": "3.6.299"
+                }
+            ],
+            "fileSet": "Debug files",
+            "toolchain": "Debug-avr-gcc",
+            "userVariables": "Debug-uservariables"
+        },
+        {
+            "name": "Debug",
+            "device": "ATmega328PB",
+            "imageType": "application",
+            "imagePath": "./out/proj_smart_fan/Debug.elf",
+            "toolProperties": "Debug-Simulator",
+            "tool": "Simulator",
+            "packs": [
+                {
+                    "name": "ATmega_DFP",
+                    "vendor": "Microchip",
+                    "version": "3.6.299"
+                }
+            ],
+            "fileSet": "Debug files",
+            "toolchain": "Debug-avr-gcc",
+            "userVariables": "Debug-uservariables"
+        },
+        {
+            "name": "Debug",
+            "device": "ATmega328PB",
+            "imageType": "application",
+            "imagePath": "./out/proj_smart_fan/Debug.elf",
+            "toolProperties": "Debug-Simulator",
+            "tool": "Simulator",
+            "packs": [
+                {
+                    "name": "ATmega_DFP",
+                    "vendor": "Microchip",
+                    "version": "3.6.299"
+                }
+            ],
+            "fileSet": "Debug files",
+            "toolchain": "Debug-avr-gcc"
+        },
+        {
+            "name": "Debug",
+            "device": "ATmega328PB",
+            "imageType": "application",
+            "imagePath": "./out/proj_smart_fan/Debug.elf",
+            "toolProperties": "Debug-Simulator",
+            "tool": "Simulator",
+            "packs": [
+                {
+                    "name": "ATmega_DFP",
+                    "vendor": "Microchip",
+                    "version": "3.6.299"
+                }
+            ],
+            "fileSet": "Debug files",
+            "toolchain": "Debug-avr-gcc"
+        }
+    ],
+    "propertyGroups": [
+        {
+            "name": "Debug-uservariables",
+            "type": "uservariables",
+            "properties": {}
+        },
+        {
+            "name": "Release-uservariables",
+            "type": "uservariables",
+            "properties": {}
+        },
+        {
+            "name": "Debug-avr-gcc",
+            "type": "toolchain",
+            "provider": "microchip.toolchains:avr-gcc@7.3.0",
+            "properties": {
+                "global.relax-branches": false,
+                "global.external-ram-check": false,
+                "compiler.call-prologues": false,
+                "compiler.no-interrupts": false,
+                "compiler.default-char-type": true,
+                "compiler.default-bitfield-type": true,
+                "compiler.optimization-level": "-O0",
+                "compiler.garbage-collect-functions": true,
+                "compiler.garbage-collect-data": true,
+                "compiler.pack-struct": true,
+                "compiler.short-enums": true,
+                "compiler.short-calls": false,
+                "compiler.no-system-directories": false,
+                "compiler.additional-warnings": true,
+                "compiler.extra-warnings": false,
+                "compiler.undefined-identifier": false,
+                "compiler.make-warnings-into-errors": false,
+                "compiler.syntax-only": false,
+                "compiler.strict-ansi": false,
+                "compiler.strict-ansi-errors": false,
+                "compiler.inhibit-all": false,
+                "compiler.verbose": false,
+                "compiler.support-ansi": false,
+                "compiler.save-temps": false,
+                "linker.no-startup-files": false,
+                "linker.no-default-libs": false,
+                "linker.exclude-standard-libraries": false,
+                "linker.omit-symbol-information": false,
+                "linker.no-shared-libraries": false,
+                "linker.generate-map-file": true,
+                "linker.v-printf": false,
+                "linker.remove-unused-sections": true,
+                "linker.rodata-writable": false,
+                "assembler.announce-version": false,
+                "compiler++.call-prologues": false,
+                "compiler++.no-interrupts": false,
+                "compiler++.default-char-type": false,
+                "compiler++.default-bitfield-type": false,
+                "compiler++.optimization-level": "-O0",
+                "compiler++.garbage-collect-functions": true,
+                "compiler++.garbage-collect-data": true,
+                "compiler++.pack-struct": false,
+                "compiler++.short-enums": false,
+                "compiler++.short-calls": false,
+                "compiler++.no-system-directories": false,
+                "compiler++.preprocess-only": false,
+                "compiler++.additional-warnings": false,
+                "compiler++.undefined-identifier": false,
+                "compiler++.make-warnings-into-errors": false,
+                "compiler++.syntax-only": false,
+                "compiler++.strict-ansi": false,
+                "compiler++.strict-ansi-errors": false,
+                "compiler++.inhibit-all": false,
+                "compiler++.verbose": false,
+                "compiler++.support-ansi": false,
+                "compiler++.save-temps": false,
+                "linker.input-libraries": "m",
+                "compiler.appendMe": [
+                    "-g2"
+                ],
+                "global.omit-pack-options": "true",
+                "global.user-pack-include": [
+                    "C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include"
+                ],
+                "global.user-pack-device-support": "C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb"
+            }
+        },
+        {
+            "name": "Release-avr-gcc",
+            "type": "toolchain",
+            "provider": "microchip.toolchains:avr-gcc@7.3.0",
+            "properties": {
+                "global.relax-branches": false,
+                "global.external-ram-check": false,
+                "compiler.call-prologues": false,
+                "compiler.no-interrupts": false,
+                "compiler.default-char-type": true,
+                "compiler.default-bitfield-type": true,
+                "compiler.optimization-level": "-Os",
+                "compiler.garbage-collect-functions": true,
+                "compiler.garbage-collect-data": true,
+                "compiler.pack-struct": true,
+                "compiler.short-enums": true,
+                "compiler.short-calls": false,
+                "compiler.no-system-directories": false,
+                "compiler.additional-warnings": true,
+                "compiler.extra-warnings": false,
+                "compiler.undefined-identifier": false,
+                "compiler.make-warnings-into-errors": false,
+                "compiler.syntax-only": false,
+                "compiler.strict-ansi": false,
+                "compiler.strict-ansi-errors": false,
+                "compiler.inhibit-all": false,
+                "compiler.verbose": false,
+                "compiler.support-ansi": false,
+                "compiler.save-temps": false,
+                "linker.no-startup-files": false,
+                "linker.no-default-libs": false,
+                "linker.exclude-standard-libraries": false,
+                "linker.omit-symbol-information": false,
+                "linker.no-shared-libraries": false,
+                "linker.generate-map-file": true,
+                "linker.v-printf": false,
+                "linker.remove-unused-sections": true,
+                "linker.rodata-writable": false,
+                "assembler.announce-version": false,
+                "compiler++.call-prologues": false,
+                "compiler++.no-interrupts": false,
+                "compiler++.default-char-type": false,
+                "compiler++.default-bitfield-type": false,
+                "compiler++.optimization-level": "-O0",
+                "compiler++.garbage-collect-functions": true,
+                "compiler++.garbage-collect-data": true,
+                "compiler++.pack-struct": false,
+                "compiler++.short-enums": false,
+                "compiler++.short-calls": false,
+                "compiler++.no-system-directories": false,
+                "compiler++.preprocess-only": false,
+                "compiler++.additional-warnings": false,
+                "compiler++.undefined-identifier": false,
+                "compiler++.make-warnings-into-errors": false,
+                "compiler++.syntax-only": false,
+                "compiler++.strict-ansi": false,
+                "compiler++.strict-ansi-errors": false,
+                "compiler++.inhibit-all": false,
+                "compiler++.verbose": false,
+                "compiler++.support-ansi": false,
+                "compiler++.save-temps": false,
+                "compiler.preprocessor-macros": "NDEBUG",
+                "linker.input-libraries": "m",
+                "global.omit-pack-options": "true",
+                "global.user-pack-include": [
+                    "C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include"
+                ],
+                "global.user-pack-device-support": "C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb"
+            }
+        },
+        {
+            "name": "Debug-mEDBG",
+            "type": "tool",
+            "properties": {
+                "programoptions.eraseb4program": true,
+                "programoptions.preserveeeprom": true,
+                "communication.interface": "ISP"
+            }
+        },
+        {
+            "name": "Debug-Simulator",
+            "type": "tool",
+            "properties": {
+                "programoptions.eraseb4program": true,
+                "programoptions.preserveeeprom": true,
+                "communication.interface": "ISP"
+            }
+        },
+        {
+            "name": "Release-mEDBG",
+            "type": "tool",
+            "properties": {
+                "programoptions.eraseb4program": true,
+                "programoptions.preserveeeprom": true,
+                "communication.interface": "ISP"
+            }
+        },
+        {
+            "name": "Release-Simulator",
+            "type": "tool",
+            "properties": {
+                "programoptions.eraseb4program": true,
+                "programoptions.preserveeeprom": true,
+                "communication.interface": "ISP"
+            }
+        }
+    ],
+    "fileSets": [
+        {
+            "name": "Release files",
+            "files": [
+                "proj_smart_fan/*{.c,.h}"
+            ],
+            "encoding": "utf-8"
+        },
+        {
+            "name": "Debug files",
+            "files": [
+                "proj_smart_fan/*{.c,.h}"
+            ],
+            "encoding": "utf-8"
+        }
+    ]
+}

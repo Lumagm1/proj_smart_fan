@@ -1,0 +1,38 @@
+[
+{
+  "directory": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug",
+  "command": "C:\\Users\\Adam\\.mplab\\app-finder\\apps\\avr-gcc\\v7.3.0\\avr8-gnu-toolchain-win32_x86_64\\bin\\avr-gcc.exe -DDebug=Debug -D__ATmega328PB__ -I\"C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include\" -x c -g -gdwarf-2 -mmcu=atmega328pb \"-BC:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb\" -x c -c -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -o CMakeFiles\\proj_smart_fan_Debug_Debug_avr_gcc_compile.dir\\C_\\Users\\Adam\\Documents\\Atmel_Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\adc.c.o -c \"C:\\Users\\Adam\\Documents\\Atmel Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\adc.c\"",
+  "file": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/proj_smart_fan/adc.c",
+  "output": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir/C_/Users/Adam/Documents/Atmel_Studio/7.0/proj_smart_fan/proj_smart_fan/adc.c.o"
+},
+{
+  "directory": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug",
+  "command": "C:\\Users\\Adam\\.mplab\\app-finder\\apps\\avr-gcc\\v7.3.0\\avr8-gnu-toolchain-win32_x86_64\\bin\\avr-gcc.exe -DDebug=Debug -D__ATmega328PB__ -I\"C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include\" -x c -g -gdwarf-2 -mmcu=atmega328pb \"-BC:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb\" -x c -c -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -o CMakeFiles\\proj_smart_fan_Debug_Debug_avr_gcc_compile.dir\\C_\\Users\\Adam\\Documents\\Atmel_Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\dcmotor.c.o -c \"C:\\Users\\Adam\\Documents\\Atmel Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\dcmotor.c\"",
+  "file": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/proj_smart_fan/dcmotor.c",
+  "output": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir/C_/Users/Adam/Documents/Atmel_Studio/7.0/proj_smart_fan/proj_smart_fan/dcmotor.c.o"
+},
+{
+  "directory": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug",
+  "command": "C:\\Users\\Adam\\.mplab\\app-finder\\apps\\avr-gcc\\v7.3.0\\avr8-gnu-toolchain-win32_x86_64\\bin\\avr-gcc.exe -DDebug=Debug -D__ATmega328PB__ -I\"C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include\" -x c -g -gdwarf-2 -mmcu=atmega328pb \"-BC:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb\" -x c -c -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -o CMakeFiles\\proj_smart_fan_Debug_Debug_avr_gcc_compile.dir\\C_\\Users\\Adam\\Documents\\Atmel_Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\i2c.c.o -c \"C:\\Users\\Adam\\Documents\\Atmel Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\i2c.c\"",
+  "file": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/proj_smart_fan/i2c.c",
+  "output": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir/C_/Users/Adam/Documents/Atmel_Studio/7.0/proj_smart_fan/proj_smart_fan/i2c.c.o"
+},
+{
+  "directory": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug",
+  "command": "C:\\Users\\Adam\\.mplab\\app-finder\\apps\\avr-gcc\\v7.3.0\\avr8-gnu-toolchain-win32_x86_64\\bin\\avr-gcc.exe -DDebug=Debug -D__ATmega328PB__ -I\"C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include\" -x c -g -gdwarf-2 -mmcu=atmega328pb \"-BC:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb\" -x c -c -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -o CMakeFiles\\proj_smart_fan_Debug_Debug_avr_gcc_compile.dir\\C_\\Users\\Adam\\Documents\\Atmel_Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\lcd.c.o -c \"C:\\Users\\Adam\\Documents\\Atmel Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\lcd.c\"",
+  "file": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/proj_smart_fan/lcd.c",
+  "output": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir/C_/Users/Adam/Documents/Atmel_Studio/7.0/proj_smart_fan/proj_smart_fan/lcd.c.o"
+},
+{
+  "directory": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug",
+  "command": "C:\\Users\\Adam\\.mplab\\app-finder\\apps\\avr-gcc\\v7.3.0\\avr8-gnu-toolchain-win32_x86_64\\bin\\avr-gcc.exe -DDebug=Debug -D__ATmega328PB__ -I\"C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include\" -x c -g -gdwarf-2 -mmcu=atmega328pb \"-BC:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb\" -x c -c -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -o CMakeFiles\\proj_smart_fan_Debug_Debug_avr_gcc_compile.dir\\C_\\Users\\Adam\\Documents\\Atmel_Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\main.c.o -c \"C:\\Users\\Adam\\Documents\\Atmel Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\main.c\"",
+  "file": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/proj_smart_fan/main.c",
+  "output": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir/C_/Users/Adam/Documents/Atmel_Studio/7.0/proj_smart_fan/proj_smart_fan/main.c.o"
+},
+{
+  "directory": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug",
+  "command": "C:\\Users\\Adam\\.mplab\\app-finder\\apps\\avr-gcc\\v7.3.0\\avr8-gnu-toolchain-win32_x86_64\\bin\\avr-gcc.exe -DDebug=Debug -D__ATmega328PB__ -I\"C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include\" -x c -g -gdwarf-2 -mmcu=atmega328pb \"-BC:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb\" -x c -c -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -o CMakeFiles\\proj_smart_fan_Debug_Debug_avr_gcc_compile.dir\\C_\\Users\\Adam\\Documents\\Atmel_Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\servo.c.o -c \"C:\\Users\\Adam\\Documents\\Atmel Studio\\7.0\\proj_smart_fan\\proj_smart_fan\\servo.c\"",
+  "file": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/proj_smart_fan/servo.c",
+  "output": "C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir/C_/Users/Adam/Documents/Atmel_Studio/7.0/proj_smart_fan/proj_smart_fan/servo.c.o"
+}
+]

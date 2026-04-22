@@ -1,0 +1,4 @@
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_Debug_avr_gcc_compile.dir
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/proj_smart_fan_Debug_image_epnbb79Y.dir
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/edit_cache.dir
+C:/Users/Adam/Documents/Atmel Studio/7.0/proj_smart_fan/_build/proj_smart_fan/Debug/CMakeFiles/rebuild_cache.dir
