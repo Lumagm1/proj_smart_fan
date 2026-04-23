@@ -59,6 +59,7 @@ ISR(TIMER4_COMPA_vect) {
 	tachCount = 0;
 
 	temp = tachRPM;
+	/*
 	putStr("\r\nFan Speed ");
 	putChar((uint8_t)(temp/1000) + '0');
 	temp = temp%1000;
@@ -67,6 +68,7 @@ ISR(TIMER4_COMPA_vect) {
 	putChar((uint8_t)(temp/10) + '0');
 	temp = temp%10;
 	putChar((uint8_t)(temp) + '0');
+	*/
 }
 
 ISR(INT1_vect) {
