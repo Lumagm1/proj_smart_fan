@@ -5,93 +5,57 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
- int fan_count = 1;
- int servo_angle_count = 1;
- int page_count = 1;
+#define PAGE_MIN 1
+#define PAGE_MAX 6
 
-unsigned char prompt9[] = "Level:";
+ static int fan_count = 1;
+ static int servo_angle_count = 1;
+ static int page_count = 1;
 
-void counter_inc(char mode) {
-    if (fan_count < 4 && mode == '0')
+
+
+void page_nav(int count)
+{
+    page_count += count;
+    if (page_count < PAGE_MIN)
     {
-        fan_count = 1;
+        page_count = PAGE_MAX;
     }
-    else if (servo_angle_count < 4 && mode == '1')
+    if (page_count > PAGE_MAX)
     {
-        servo_angle_count = 1;
-    }
-    else if (page_count < 8 && mode == '2')
-    {
-        page_count = 1;
-    }
-    if (mode == '0')
-    {
-        fan_count++;
-        lcd_gotoxy(1, 2);
-        lcd_print(prompt9 + fan_count);
-    }
-    else if (mode == '1')
-    {
-        servo_angle_count++;
-        lcd_gotoxy(1, 2);
-        lcd_print(prompt9 + servo_angle_count);
+        page_count = PAGE_MIN;
     }
 }
 
-int get_servo_lvl (){
-    return servo_angle_count;
-}
-
-int get_fan_lvl (){
-    return fan_count;
-}
-
-void counter_dec(char mode) {
-    if ( fan_count < 1)
-    {
-        fan_count = 4;
-    }
-    if (servo_angle_count < 1)
-    {
-        servo_angle_count = 4;
-    }
-    if (page_count < 1)
-    {
-        page_count = 8;
-    }
-    if (mode == '0')
-    {
-        fan_count--;
-        lcd_gotoxy(1, 2);
-        lcd_print(prompt9 + fan_count);
-    }
-    else if (mode == '1')
-    {
-        servo_angle_count--;
-        lcd_gotoxy(1, 2);
-        lcd_print(prompt9 + servo_angle_count);
-    }
+int get_page_num(void)
+{
+    return page_count;
 }
 
 
 
-void bar_lvl(char mode){
-    while (!data_joystick_button())
-    {
-        Direction last = get_js_direction(data_joystick_X(), data_joystick_Y());
-        _delay_ms(500);
-        Direction save = get_js_direction(data_joystick_X(), data_joystick_Y());
-        if (save == RIGHT && last == CENTER)
-        {
-            counter_inc(mode);
+
+
+
+
+
+
+
+char wait_input(void) {
+    Direction prev = CENTER;
+    while (1) {
+        if (data_joystick_button()) {
+            _delay_ms(50);
+            while (data_joystick_button());
+            return 'B';
         }
-        else if (save == LEFT && last == CENTER)
-        {
-            counter_dec(mode);
-        }
-    }   
+        Direction cur = get_js_direction(data_joystick_X(), data_joystick_Y());
+        if (prev == CENTER && cur == RIGHT) return 'R';
+        if (prev == CENTER && cur == LEFT)  return 'L';
+        prev = cur;
+        _delay_ms(30);
+    }
 }
-
 void lcd_page()
 {
     unsigned char prompt1[] = "Smart Fan";      //Menu 1
@@ -106,57 +70,78 @@ void lcd_page()
     unsigned char prompt10[] = "Temp";
     unsigned char prompt11[] = "Fan Speed";
 
-     if (get_page_lvl() == 1)
+     if (get_page_num() == 1)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt1); // Project Smart Fan
             lcd_gotoxy(1, 2);
             lcd_print(prompt2); // Swipe Right ->
         }
-        if (get_page_lvl() == 2)
+        if (get_page_num() == 2)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt3); // Power Fan
             lcd_gotoxy(1, 2);
-            //lcd_print(prompt4); // On
+            lcd_print(get_power_mode() ? prompt4:prompt5);
         }
-        if (get_page_lvl() == 3)
+        if (get_page_num() == 3)
         {
             lcd_gotoxy(1, 1);
-            lcd_print(prompt6); // Manual
+            lcd_print(get_fan_mode() ? prompt6:prompt7); // Manual
             lcd_gotoxy(1, 2);
-            //  lcd_print (prompt4); // Om
-
+            lcd_print(prompt4);
+             
         }
-        if (get_page_lvl() == 4)
-        {
-            lcd_gotoxy(1, 1);
-            lcd_print(prompt7); // Auto
-            lcd_gotoxy(1, 2);
-            //lcd_print(prompt4); // On
-        }
-        if (get_page_lvl() == 5)
+        if (get_page_num() == 4)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt8); // Fan Angle
             lcd_gotoxy(1, 2);
             //lcd_print();      //Fan Angle Value
         }
-        if (get_page_lvl() == 6)
+        if (get_page_num() == 5)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt9); // Fan Speed
             lcd_gotoxy(1, 2);
             //lcd_print();      //Fan Speed Value
         }
-        if (get_page_lvl() == 7)
+        if (get_page_num() == 6)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt10); // Temp
             lcd_gotoxy(1, 2);
             //lcd_print();      //Temp Value
         }
-        
 }
+
+
+
+void page_action()
+{
+    switch(page_count)
+    {
+        case 1:
+            fan_power();
+        case 2:
+            fan_mode();
+        case 3:
+            fan_angle();
+        case 4:
+            fan_speed();
+        case 5:
+            break;
+        case 6:
+            break;
+        default:
+            break;
+    }
+}
+
+
+
+
+
+
 
 

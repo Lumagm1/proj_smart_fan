@@ -74,13 +74,25 @@ void putStr(char *str);
  void i2c_stop();
 
  //misc functions
- void counter_inc(char mode);
- void counter_dec(char mode);
- void bar_lvl(char mode);
- int get_page_lvl();
+
+ char wait_input(void);
  int get_servo_lvl();
  int get_fan_lvl();
  void lcd_page();
+ void page_nav(int count);
+ void page_action();
+ int get_page_num(void);
+ int get_power_mode();
+ int get_fan_mode(void);
+
+
+// Page Functions
+void fan_power();   // PAGE 2
+void fan_mode();    // PAGE 3
+void fan_angle();   // PAGE 4
+void fan_speed();   // PAGE 5
+
+
  
 
 #endif
