@@ -69,6 +69,7 @@ void lcd_page()
     unsigned char prompt9[] = "Fan Speed";
     unsigned char prompt10[] = "Temp";
     unsigned char prompt11[] = "Fan Speed";
+    unsigned char prompt12[] = "LVL";
 
      if (get_page_num() == 1)
         {
@@ -97,7 +98,7 @@ void lcd_page()
             lcd_gotoxy(1, 1);
             lcd_print(prompt8); // Fan Angle
             lcd_gotoxy(1, 2);
-            //lcd_print();      //Fan Angle Value
+            lcd_print(prompt12);      //Fan Angle Value
         }
         if (get_page_num() == 5)
         {
@@ -130,7 +131,7 @@ void page_action()
         case 4:
             fan_speed();
         case 5:
-            break;
+            fan_temp();
         case 6:
             break;
         default:

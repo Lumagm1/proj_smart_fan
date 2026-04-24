@@ -99,6 +99,13 @@ void fan_angle()
     }
 }
 
+//page 5
+
+void get_fan_speed()
+{
+    fan_speed_count;
+}
+
 void fan_speed()
 {
     while (1)
@@ -125,4 +132,17 @@ void fan_speed()
     }
 }
 
+//page 6
+
+void fan_temp()
+{
+
+}
+
+
+//page 7
+void fan_speed_monitor()
+{
+
+}
 

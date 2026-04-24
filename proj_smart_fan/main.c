@@ -37,10 +37,6 @@ int main(void) {
         {
             page_nav(-1);
         }
-
-        
-
-
     }
     
     

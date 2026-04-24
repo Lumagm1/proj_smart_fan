@@ -49,6 +49,8 @@ uint8_t data_joystick_button();
 //void init_SM_IO();
 //void initTimer0();
 
+void servo_angle(int fan_angle_lvl);
+
 //DC Fan Motor
 void init_DC_IO();
 void initTimer3();
@@ -84,6 +86,7 @@ void putStr(char *str);
  int get_page_num(void);
  int get_power_mode();
  int get_fan_mode(void);
+ int get_fan_speed(void);
 
 
 // Page Functions
@@ -91,6 +94,8 @@ void fan_power();   // PAGE 2
 void fan_mode();    // PAGE 3
 void fan_angle();   // PAGE 4
 void fan_speed();   // PAGE 5
+void fan_temp();    // PAGE 6
+void fan_speed();   // page 7
 
 
  

@@ -12,3 +12,9 @@ void initTimer0() {
 	TCCR0B |= (1 << CS02) | (1 << CS00);		// Clock prescaler = 1024, freq = 15.6k; PWM freq = 61 Hz
 	TCNT0 = 0;									// Initialize counter
 }
+
+
+void servo_angle(int fan_angle_lvl)
+{
+ // lvl 1 up to 4 are different levels
+}
