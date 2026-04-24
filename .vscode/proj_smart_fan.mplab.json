@@ -3,47 +3,13 @@
     "version": "1.9",
     "configurations": [
         {
-            "name": "Release",
+            "name": "pickit",
             "id": "",
             "device": "ATmega328PB",
             "imageType": "application",
-            "imagePath": "./out/proj_smart_fan/Release.elf",
-            "toolProperties": "Release-mEDBG",
-            "tool": "Simulator",
-            "packs": [
-                {
-                    "name": "ATmega_DFP",
-                    "vendor": "Microchip",
-                    "version": "3.6.299"
-                }
-            ],
-            "fileSet": "Release files",
-            "toolchain": "Release-avr-gcc"
-        },
-        {
-            "name": "Debug",
-            "device": "ATmega328PB",
-            "imageType": "application",
             "imagePath": "./out/proj_smart_fan/Debug.elf",
-            "toolProperties": "Debug-mEDBG",
-            "tool": "mEDBG",
-            "packs": [
-                {
-                    "name": "ATmega_DFP",
-                    "vendor": "Microchip",
-                    "version": "3.6.299"
-                }
-            ],
-            "fileSet": "Debug files",
-            "toolchain": "Debug-avr-gcc"
-        },
-        {
-            "name": "Debug",
-            "device": "ATmega328PB",
-            "imageType": "application",
-            "imagePath": "./out/proj_smart_fan/Debug.elf",
-            "toolProperties": "Debug-mEDBG",
-            "tool": "mEDBG",
+            "toolProperties": "pickit-tool-base",
+            "tool": "PICkit Basic",
             "packs": [
                 {
                     "name": "ATmega_DFP",
@@ -205,6 +171,18 @@
                 "programoptions.eraseb4program": true,
                 "programoptions.preserveeeprom": true,
                 "communication.interface": "ISP"
+            }
+        },
+        {
+            "name": "pickit-tool-base",
+            "type": "tool",
+            "properties": {
+                "programoptions.eraseb4program": true,
+                "programoptions.preserveeeprom": true,
+                "communication.interface": "ISP",
+                "communication.speed": "4",
+                "speed": "low",
+                "ProgramSpeed": "Low"
             }
         },
         {

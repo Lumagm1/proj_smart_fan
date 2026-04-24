@@ -44,8 +44,9 @@ uint8_t data_joystick_button();
 //void init_TS_IO();
 
 // Servo Motor 
-//void init_SM_IO();
-//void initTimer0();
+void init_Servo_IO();
+void initTimer1();
+void setServoAngle();
 
 //DC Fan Motor
 void init_DC_IO();

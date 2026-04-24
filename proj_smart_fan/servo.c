@@ -1,9 +1,10 @@
 #include "func.h"
 #include <avr/io.h>
 
-void init_SM_IO() {
+void init_Servo_IO() {
 	// Timer 1 - PWM output = OC1A = PB1
 	DDRB |= (1 << PINB1); // Set PB1 = OC1A as an output
+	initTimer1();
 }
 
 void initTimer1() {
@@ -15,11 +16,11 @@ void initTimer1() {
 	TCNT1 = 0;					// Initialize counter
 }
 
-void setServoAngle(int angle) {
+void setServoAngle(double angle) {
 	if (angle < 0) angle = 0;
 	if (angle > 180) angle = 180;
 	
 	// Map angle (0-180) to pulse width (500-2500 microseconds)
-	int pulseWidth = 500 + (angle * 2000) / 180; 
+	int pulseWidth = 500.0 + ((angle / 180.0) * 2000.0); 
 	OCR1A = pulseWidth;
 }
