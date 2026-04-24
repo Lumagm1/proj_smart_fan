@@ -46,21 +46,24 @@ uint8_t data_joystick_button();
 // Servo Motor 
 void init_Servo_IO();
 void initTimer1();
-void setServoAngle();
+void servo_angle(double angle);
 
 //DC Fan Motor
 void init_DC_IO();
 void initTimer3();
 void initTimer4();
+int DC_Fan_data();
 
 void startFan();
 void stopFan();
 
-//UART Debug
+
 void initUART();
 unsigned char getChar();
 void putChar(unsigned char c);
 void putStr(char *str);
+
+
 
  void i2c(unsigned char data, unsigned char address);
  void i2c_init();
@@ -69,5 +72,29 @@ void putStr(char *str);
  void i2c_data(unsigned char data);
  void i2c_stop();
 
+ //misc functions
+
+ char wait_input(void);
+ int get_servo_lvl();
+ int get_fan_lvl();
+ void lcd_page();
+ void page_nav(int count);
+ void page_action();
+ int get_page_num(void);
+ int get_power_mode();
+ int get_fan_mode(void);
+ int get_fan_speed(void);
+
+
+// Page Functions
+void fan_power();   // PAGE 2
+void fan_mode();    // PAGE 3
+void fan_angle();   // PAGE 4
+void fan_speed();   // PAGE 5
+void fan_temp();    // PAGE 6
+void fan_speed_monitor();   // PAGE 7
+
+
+ 
 
 #endif

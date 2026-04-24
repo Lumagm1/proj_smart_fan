@@ -96,12 +96,12 @@ void data_joystick_XY(uint16_t *x, uint16_t *y) { // Return the latest X and Y v
 }
 
 void init_joystick_button() {
-	DDRD &= ~(1 << DDD3); // Set PB0 as input
-	PORTD |= (1 << PORTD3); // Enable pull-up resistor on PB0
+	DDRD &= ~(1 << DDD4); // Set PD4 as input
+	PORTD |= (1 << PORTD4); // Enable pull-up resistor on PD4
 }
 
 uint8_t data_joystick_button() {
-	return (PIND & (1 << PIND3)) == 0; // Return 1 if button is pressed, 0 otherwise
+	return (PIND & (1 << PIND4)) == 0; // Return 1 if button is pressed, 0 otherwise
 }
 
 // This ISR runs every time an A/D conversion completes
