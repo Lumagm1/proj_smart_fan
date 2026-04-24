@@ -15,7 +15,6 @@
 static int power_mode = 0;
 static int fan_modes = 0;
 static int servo_angle_count = 1;
-static int page_count = 1;
 static int fan_speed_count = 1;
 
 
@@ -30,6 +29,7 @@ void fan_power()
     {
         lcd_clear();
         lcd_page();
+        _delay_ms(2000);
         char input = wait_input();
         if (input == 'B')
         {
@@ -59,6 +59,7 @@ void fan_mode()
     {
         lcd_clear();
         lcd_page();
+        _delay_ms(2000);
         char input = wait_input();
         if (input == 'B')
         {
@@ -101,9 +102,9 @@ void fan_angle()
 
 //page 5
 
-void get_fan_speed()
+int get_fan_speed(void)
 {
-    fan_speed_count;
+    return fan_speed_count;
 }
 
 void fan_speed()

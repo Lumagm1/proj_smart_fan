@@ -95,7 +95,7 @@ void fan_mode();    // PAGE 3
 void fan_angle();   // PAGE 4
 void fan_speed();   // PAGE 5
 void fan_temp();    // PAGE 6
-void fan_speed();   // page 7
+void fan_speed_monitor();   // PAGE 7
 
 
  

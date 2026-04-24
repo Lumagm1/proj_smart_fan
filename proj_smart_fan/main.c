@@ -11,16 +11,13 @@
 
 int main(void) {
 
-	uint16_t x,y;
-    static unsigned char *last_message = 0; // Store the last displayed message
-
-
 
 	lcd_init();  
 	init_ADC(0); // Initialize ADC for joystick
     init_joystick_button();
     init_DC_IO();
     while (1){
+        lcd_clear();
         lcd_page();
         char input = wait_input();
         if (input == 'B')
@@ -37,6 +34,7 @@ int main(void) {
         {
             page_nav(-1);
         }
+        _delay_ms(200);
     }
     
     
