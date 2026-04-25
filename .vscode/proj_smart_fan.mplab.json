@@ -218,7 +218,9 @@
                 "proj_smart_fan/lcd.c",
                 "proj_smart_fan/main.c",
                 "proj_smart_fan/servo.c",
-                "proj_smart_fan/uart_dbug.c"
+                "proj_smart_fan/uart_dbug.c",
+                "proj_smart_fan/misc.c",
+                "proj_smart_fan/page.c"
             ],
             "encoding": "utf-8"
         }
