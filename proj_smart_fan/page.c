@@ -91,10 +91,12 @@ void fan_angle()
             if (servo_angle_count < FAN_ANGLE_MIN)
             {
                 servo_angle_count = FAN_ANGLE_MAX;
+                // put servo angle function here with servo_angle_count as input/argument
             }
             else if (servo_angle_count >  FAN_ANGLE_MAX)
             {
                 servo_angle_count = FAN_ANGLE_MIN;
+                // put servo angle function here with servo_angle_count as input/argument
             }
         }
     }
@@ -124,10 +126,12 @@ void fan_speed()
             if (fan_speed_count < FAN_SPEED_MIN)
             {
                 fan_speed_count = FAN_SPEED_MAX;
+                // put fan speed function here with fan_speed_count as input/argument
             }
             else if (fan_speed_count >  FAN_SPEED_MAX)
             {
                 fan_speed_count = FAN_SPEED_MIN;
+                // put fan speed function here with fan_speed_count as input/argument
             }
         }
     }
