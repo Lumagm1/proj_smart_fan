@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/proj_smart_fan/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,7 +12,7 @@
                 "_UNICODE"
             ],
             "compileCommands": [
-                "${workspaceFolder}/_build/proj_smart_fan/Debug/compile_commands.json"
+                "${workspaceFolder}/_build/proj_smart_fan/pickit/compile_commands.json"
             ]
         }
     ],
