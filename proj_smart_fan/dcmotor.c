@@ -7,9 +7,11 @@
 #define MAX_RPM 3000
 #define MIN_RPM 650
 
+uint8_t fanON = 0;
 uint8_t tachCount = 0;
+
+int targetSpeed = 50;
 int tachRPM = 0;
-int temp = 0;
 
 void init_DC_IO() {
 	DDRD |= (1 << PIND2);	//PWM Output
@@ -47,18 +49,27 @@ void initTimer4() {
 }
 
 void startFan() {
-	OCR3B = 639;
+	fanON = 1;
+	OCR3B = targetSpeed * 6.39;
 }
 
 void stopFan() {
+	fanON = 0;
 	OCR3B = 0;
+}
+
+void setFan(int target) {
+	targetSpeed = target;
+	OCR3B = target * 6.39 * fanON;
+}
+
+int getTach() {
+	return tachRPM;
 }
 
 ISR(TIMER4_COMPA_vect) {
 	tachRPM = 30 * (tachCount);
 	tachCount = 0;
-
-	temp = tachRPM;
 	/*
 	putStr("\r\nFan Speed ");
 	putChar((uint8_t)(temp/1000) + '0');

@@ -46,7 +46,7 @@ uint8_t data_joystick_button();
 // Servo Motor 
 void init_Servo_IO();
 void initTimer1();
-void servo_angle(double angle);
+void setServoAngle(double angle);
 
 //DC Fan Motor
 void init_DC_IO();
@@ -56,6 +56,7 @@ int DC_Fan_data();
 
 void startFan();
 void stopFan();
+void setFan();
 
 
 void initUART();
