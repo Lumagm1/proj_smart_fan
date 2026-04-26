@@ -1,10 +1,8 @@
 #ifndef FUNC_H
 #define FUNC_H
 
-#include <stdint.h>
-
 // your declarations go here
-
+#include <stdint.h>
 
 #define LCD_RS (1 << 0)
 #define LCD_RW (1 << 1)
@@ -46,10 +44,9 @@ uint8_t data_joystick_button();
 //void init_TS_IO();
 
 // Servo Motor 
-//void init_SM_IO();
-//void initTimer0();
-
-void servo_angle(int fan_angle_lvl);
+void init_Servo_IO();
+void initTimer1();
+void servo_angle(double angle);
 
 //DC Fan Motor
 void init_DC_IO();

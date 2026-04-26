@@ -1,0 +1,19 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Note: Properties here can override MPLAB project settings
+      "name": "Launch proj_smart_fan: Debug",
+      "type": "mplab-core-da",
+      "request": "launch",
+      "project": "proj_smart_fan",
+      "configuration": "Debug",
+      "stopOnEntry": true,
+      "preLaunchTask": "proj_smart_fan: Debug - Build",
+      "program": "${workspaceFolder}/out/proj_smart_fan/Debug.elf"
+    }
+  ]
+}
