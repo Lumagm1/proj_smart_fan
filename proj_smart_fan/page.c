@@ -6,7 +6,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#define FAN_ANGLE_MIN  1
+#define FAN_ANGLE_MIN  0
 #define FAN_ANGLE_MAX  4
 #define FAN_SPEED_MIN  1
 #define FAN_SPEED_MAX  4
