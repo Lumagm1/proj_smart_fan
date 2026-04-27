@@ -61,14 +61,13 @@ float read_temp() {
 
 float temp_monitor() {
 
-    // Convert ADC reading to millivolts
-    // AVcc assumed to be 5.0V = 5000 mV
-    float temp_f = tempvalue * (5000.0 / 1024.0);
+ 	uint16_t adc = tempvalue;
 
-    // LM35 = 10 mV per degree Celsius
-     temp_f = tempvalue / 10.0;
+    float voltage_mV = adc * (5000.0 / 1024.0);
+    float temp_C = voltage_mV / 10.0;
+    float temp_F = (temp_C * 9.0 / 5.0) + 32.0;
 
-    return temp_f;
+    return temp_F;
 }
 
 Direction get_js_direction(uint16_t x, uint16_t y) {
@@ -142,8 +141,8 @@ ISR(ADC_vect) {
 		discard_sample = 1; // Discard the next sample to allow the channel switch to take effect
 	}
 	else if (channel == 2) {
-		tempvalue = ADCL;	// only read the high value for 8 bit
-		tempvalue |= ((uint16_t)ADCH << 8);
+		tempvalue = ADC;	// only read the high value for 10 bit
+	
 	}
 }
 
