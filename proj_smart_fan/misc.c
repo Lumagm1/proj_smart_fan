@@ -98,14 +98,18 @@ void lcd_page()
             lcd_gotoxy(1, 1);
             lcd_print(prompt8); // Fan Angle
             lcd_gotoxy(1, 2);
-            lcd_print(prompt12);      //Fan Angle Value
+            char angle[16];
+            sprintf(angle, "Temp %f F", get_servo_lvl());
+            lcd_print((unsigned char *)angle);      //Temp Value
         }
         if (get_page_num() == 5)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt9); // Fan Speed
             lcd_gotoxy(1, 2);
-            lcd_print(prompt12);         //Fan Speed Value
+            char fan_lvl[16];
+            sprintf(fan_lvl, "Temp %f F", get_fan_lvl());
+            lcd_print((unsigned char *)fan_lvl);             //Fan Speed Value
         }
         if (get_page_num() == 6)
         {

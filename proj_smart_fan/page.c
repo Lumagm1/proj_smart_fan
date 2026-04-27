@@ -1,3 +1,4 @@
+#define F_CPU 16000000UL
 #include "func.h"
 #include <stdio.h>
 #include <stdint.h>
