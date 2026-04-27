@@ -15,7 +15,7 @@
 
 static int power_mode = 0;
 static int fan_modes = 0;
-static int servo_angle_count = 0;
+static int servo_angle_count = 2;
 static int fan_speed_count = 1;
 
 
@@ -90,7 +90,7 @@ void fan_angle()
         {
             break;
         }
-        else if (input == 'U')
+        else if (input == 'D')
         {
             servo_angle_count--;
             if (servo_angle_count < FAN_ANGLE_MIN)
@@ -113,7 +113,7 @@ void fan_angle()
                     setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
                 }
         }
-        else if (input == 'D')
+        else if (input == 'U')
         {
             servo_angle_count++;
             if (servo_angle_count < FAN_ANGLE_MIN)
@@ -158,7 +158,7 @@ void fan_speed()
         {
             break;
         }
-        else if (input == 'U' || input == 'D')
+        else if (input == 'D')
         {
             fan_speed_count--;
             if (fan_speed_count < FAN_SPEED_MIN)
@@ -182,7 +182,7 @@ void fan_speed()
                     setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
                 }
         }
-        else if (input == 'D')
+        else if (input == 'U')
         {
             fan_speed_count++;
             if (fan_speed_count < FAN_SPEED_MIN)
