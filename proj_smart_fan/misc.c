@@ -117,7 +117,7 @@ void lcd_page()
             lcd_print(prompt10); // Temp
             lcd_gotoxy(1, 2);
             char temp[16];
-            sprintf(temp, "Temp %f F", read_temp());
+            sprintf(temp, "Temp %.1f F", read_temp());
             lcd_print((unsigned char *)temp);      //Temp Value
         }
         if (get_page_num() == 7)
