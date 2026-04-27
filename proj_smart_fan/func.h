@@ -48,6 +48,7 @@ float temp_monitor();
 void init_Servo_IO();
 void initTimer1();
 void setServoAngle(double angle);
+void servoOscilate(uint8_t osc);
 
 //DC Fan Motor (pwm.c)
 void init_DC_IO();

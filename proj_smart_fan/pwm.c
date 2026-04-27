@@ -13,6 +13,7 @@ int tachRPM = 0;
 
 int targetAngle = 90;
 int currentAngle = 90;
+int oscillate = 0;
 
 void init_DC_IO() {
 	DDRD |= (1 << PIND2);	//PWM Output
@@ -88,17 +89,29 @@ void initTimer1() {
 }
 
 void setServoAngle(double angle) {
-	if (angle < 0) angle = 0;
-	if (angle > 180) angle = 180;
-	targetAngle = angle;
+	if(oscillate == 0) {
+		if (angle < 0) angle = 0;
+		if (angle > 180) angle = 180;
+		targetAngle = angle;
+	}
+}
+
+void servoOscilate(uint8_t osc) {
+	oscillate = osc;
 }
 
 ISR(TIMER4_COMPA_vect) {
 	tachRPM = 30 * (tachCount);
 	tachCount = 0;
 
+	if(oscillate == 1 && currentAngle == 180) {
+		targetAngle = 0;
+	} else if(oscillate == 1 && currentAngle == 0) {
+		targetAngle = 180;
+	}
+
 	int delta = targetAngle - currentAngle;
-	signed int dir = delta / abs(delta);  
+	signed int dir = delta / abs(delta);
 	if(abs(delta) > 3) {
 		currentAngle += dir * 4;
 	} else if (abs(delta) <= 3) {
