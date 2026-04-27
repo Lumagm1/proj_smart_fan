@@ -213,11 +213,10 @@
             "name": "Debug files",
             "files": [
                 "proj_smart_fan/adc.c",
-                "proj_smart_fan/dcmotor.c",
+                "proj_smart_fan/pwm.c",
                 "proj_smart_fan/i2c.c",
                 "proj_smart_fan/lcd.c",
                 "proj_smart_fan/main.c",
-                "proj_smart_fan/servo.c",
                 "proj_smart_fan/uart_dbug.c",
                 "proj_smart_fan/misc.c",
                 "proj_smart_fan/page.c"
