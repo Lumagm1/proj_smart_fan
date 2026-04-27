@@ -11,8 +11,8 @@ uint8_t tachCount = 0;
 int targetSpeed = 50;
 int tachRPM = 0;
 
-int targetAngle = 0;
-int currentAngle = 0;
+int targetAngle = 90;
+int currentAngle = 90;
 
 void init_DC_IO() {
 	DDRD |= (1 << PIND2);	//PWM Output
@@ -59,9 +59,10 @@ void stopFan() {
 	OCR3B = 0;
 }
 
-void setFan(int target) {
-	targetSpeed = target;
-	OCR3B = target * 6.39 * fanON;
+//set fan speed from 0% 25% 50% 75% 100% using 0-4
+void setFan(int target) { 
+	targetSpeed = target * 0.25;
+	OCR3B = targetSpeed * 6.39 * fanON;
 }
 
 int getTach() {
