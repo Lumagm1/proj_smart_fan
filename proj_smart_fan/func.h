@@ -41,7 +41,8 @@ uint8_t data_joystick_button();
 
 
 // Temperature Sensor
-//void init_TS_IO();
+uint16_t read_temp();
+float temp_monitor();
 
 // Servo Motor 
 void init_Servo_IO();

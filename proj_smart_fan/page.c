@@ -137,17 +137,3 @@ void fan_speed()
     }
 }
 
-//page 6
-
-void fan_temp()
-{
-
-}
-
-
-//page 7
-void fan_speed_monitor()
-{
-
-}
-

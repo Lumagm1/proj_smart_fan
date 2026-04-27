@@ -54,6 +54,22 @@ uint16_t data_joystick_Y() {
 	return y_value; // Return the latest Y-axis value
 }
 
+float read_temp() {
+	return temp_monitor(); // Return the latest temperature value
+}
+
+float temp_monitor() {
+
+    // Convert ADC reading to millivolts
+    // AVcc assumed to be 5.0V = 5000 mV
+    float voltage_mV = tempvalue * (5000.0 / 1024.0);
+
+    // LM35 = 10 mV per degree Celsius
+    float temp_f = tempvalue / 10.0;
+
+    return temp_f;
+}
+
 Direction get_js_direction(uint16_t x, uint16_t y) {
 	static Direction last = CENTER; // Store the last direction to avoid rapid changes
 	

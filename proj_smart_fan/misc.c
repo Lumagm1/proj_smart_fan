@@ -111,12 +111,14 @@ void lcd_page()
             lcd_gotoxy(1, 1);
             lcd_print(prompt10); // Temp
             lcd_gotoxy(1, 2);
-            lcd_print(prompt12);      //Temp Value
+            char buffer[16];
+            sprintf(buffer, "Temp %f F", read_temp());
+            lcd_print(buffer);      //Temp Value
         }
         if (get_page_num() == 7)
         {
             lcd_gotoxy(1, 1);
-            lcd_print(prompt11); // Temp
+            lcd_print(prompt11); // Fan RPM Monitor
             lcd_gotoxy(1, 2);
             lcd_print(prompt12);      //Temp Value
         }
@@ -139,7 +141,9 @@ void page_action()
         case 5:
             fan_speed();
         case 6:
-            fan_temp();
+            break; // fan_temp();
+        case 7:
+            break; // fan_speed_monitor();
         default:
             break;
     }
