@@ -60,9 +60,8 @@ void stopFan() {
 	OCR3B = 0;
 }
 
-//set fan speed from 0% 25% 50% 75% 100% using 0-4
 void setFan(int target) { 
-	targetSpeed = target * 0.25;
+	targetSpeed = target;
 	OCR3B = targetSpeed * 6.39 * fanON;
 }
 
@@ -75,7 +74,6 @@ int getTach() {
 void init_Servo_IO() {
 	// Timer 1 - PWM output = OC1A = PB1
 	DDRB |= (1 << PINB1); // Set PB1 = OC1A as an output
-	DDRB |= (1 << PINB5);
 	initTimer1();
 }
 
@@ -84,7 +82,7 @@ void initTimer1() {
 	TCCR1B |= (1 << WGM13);		// Phase/Frequency Correct mode for OC1A								
 	TCCR1B |= (1 << CS11);		// Clock prescaler = 8, PWM freq = 50Hz
 	ICR1 = 20000;				// TOP value for 50Hz PWM
-	OCR1A = 500;				// Initial duty cycle (0.5ms pulse width = 0 Degrees)
+	OCR1A = 1500;				// Initial duty cycle (0.5ms pulse width = 0 Degrees)
 	TCNT1 = 0;					// Initialize counter
 }
 
