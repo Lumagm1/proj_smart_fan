@@ -74,7 +74,10 @@ void fan_mode()
 }
 
 //page 4
-
+int get_servo_lvl(void)
+{
+    return servo_angle_count;
+}
 void fan_angle()
 {
     while (1)
@@ -112,7 +115,7 @@ void fan_angle()
 
 //page 5
 
-int get_fan_speed(void)
+int get_fan_lvl(void)
 {
     return fan_speed_count;
 }

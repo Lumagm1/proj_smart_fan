@@ -69,7 +69,7 @@ void lcd_page()
     unsigned char prompt9[] = "Fan Speed";
     unsigned char prompt10[] = "Temp";
     unsigned char prompt11[] = "RPM Monitor";
-    unsigned char prompt12[] = "LVL";
+    
 
      if (get_page_num() == 1)
         {
@@ -99,8 +99,8 @@ void lcd_page()
             lcd_print(prompt8); // Fan Angle
             lcd_gotoxy(1, 2);
             char angle[16];
-            sprintf(angle, "Temp %f F", get_servo_lvl());
-            lcd_print((unsigned char *)angle);      //Temp Value
+            sprintf(angle, "LVL %d", get_servo_lvl());
+            lcd_print((unsigned char *)angle);      //fan Angle Value
         }
         if (get_page_num() == 5)
         {
@@ -108,7 +108,7 @@ void lcd_page()
             lcd_print(prompt9); // Fan Speed
             lcd_gotoxy(1, 2);
             char fan_lvl[16];
-            sprintf(fan_lvl, "Temp %f F", get_fan_lvl());
+            sprintf(fan_lvl, "LVL %d", get_fan_lvl());
             lcd_print((unsigned char *)fan_lvl);             //Fan Speed Value
         }
         if (get_page_num() == 6)

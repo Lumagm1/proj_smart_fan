@@ -82,7 +82,7 @@ int get_fan_lvl();
 int get_page_num(void);
 int get_power_mode();
 int get_fan_mode(void);
-int get_fan_speed(void);
+
 
 
 // Page Functions   (page.c)
