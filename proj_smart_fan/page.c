@@ -109,7 +109,7 @@ void fan_angle()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(200);
+        _delay_ms(100);
         char input = wait_input();
         if (input == 'B')
         {
@@ -119,48 +119,20 @@ void fan_angle()
         {
             servo_angle_count--;
             if (servo_angle_count < FAN_ANGLE_MIN)
-            {
                 servo_angle_count = FAN_ANGLE_MAX;
-                if (power_mode == 1) {
-                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
-                }
-                // put servo angle function here with servo_angle_count as input/argument
-            }
-            else if (servo_angle_count >  FAN_ANGLE_MAX)
-            {
-                servo_angle_count = FAN_ANGLE_MIN;
-                if (power_mode == 1) {
-                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
-                }
-                // put servo angle function here with servo_angle_count as input/argument
-            }
-            if (power_mode == 1) {
-                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
-                }
+            if (power_mode == 1)
+                setServoAngle(servo_angle_count * 45);
         }
         else if (input == 'U')
         {
             servo_angle_count++;
-            if (servo_angle_count < FAN_ANGLE_MIN)
-            {
-                servo_angle_count = FAN_ANGLE_MAX;
-                if (power_mode == 1) {
-                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
-                }
-                // put servo angle function here with servo_angle_count as input/argument
-            }
-            else if (servo_angle_count >  FAN_ANGLE_MAX)
-            {
+            if (servo_angle_count > FAN_ANGLE_MAX)
                 servo_angle_count = FAN_ANGLE_MIN;
-                if (power_mode == 1) {
-                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
-                }
-                // put servo angle function here with servo_angle_count as input/argument
-            }
-            if (power_mode == 1) {
-                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
-                }
+            if (power_mode == 1)
+                setServoAngle(servo_angle_count * 45);
         }
+        lcd_clear();
+        lcd_page();
     }
 }
 
@@ -177,7 +149,7 @@ void fan_speed()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(200);
+        _delay_ms(100);
         char input = wait_input();
         if (input == 'B')
         {
@@ -187,50 +159,20 @@ void fan_speed()
         {
             fan_speed_count--;
             if (fan_speed_count < FAN_SPEED_MIN)
-            {
                 fan_speed_count = FAN_SPEED_MAX;
-                if (power_mode == 1) {
-                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
-                }
-                // put fan speed function here with fan_speed_count as input/argument
-            }
-            else if (fan_speed_count >  FAN_SPEED_MAX)
-            {
-                fan_speed_count = FAN_SPEED_MIN;
-                if (power_mode == 1) {
-                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
-                }
-                // put fan speed function here with fan_speed_count as input/argument
-            }
-            
-                if (power_mode == 1) {
-                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
-                }
+            if (power_mode == 1)
+                setFan(fan_speed_count * 25);
         }
         else if (input == 'U')
         {
             fan_speed_count++;
-            if (fan_speed_count < FAN_SPEED_MIN)
-            {
-                fan_speed_count = FAN_SPEED_MAX;
-                if (power_mode == 1) {
-                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
-                }
-                // put fan speed function here with fan_speed_count as input/argument
-            }
-            else if (fan_speed_count >  FAN_SPEED_MAX)
-            {
+            if (fan_speed_count > FAN_SPEED_MAX)
                 fan_speed_count = FAN_SPEED_MIN;
-                if (power_mode == 1) {
-                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
-                }
-                // put fan speed function here with fan_speed_count as input/argument
-            }
-            
-                if (power_mode == 1) {
-                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
-                }
+            if (power_mode == 1)
+                setFan(fan_speed_count * 25);
         }
+        lcd_clear();
+        lcd_page();
     }
 }
 
