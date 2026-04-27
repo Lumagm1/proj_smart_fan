@@ -11,8 +11,8 @@ uint8_t tachCount = 0;
 int targetSpeed = 50;
 int tachRPM = 0;
 
-int targetAngle = 0;
-int currentAngle = 0;
+int targetAngle = 90;
+int currentAngle = 90;
 
 void init_DC_IO() {
 	DDRD |= (1 << PIND2);	//PWM Output
