@@ -62,7 +62,7 @@ float read_temp() {
 float temp_monitor() {
 uint16_t adc;
 
-   uint16_t adc;
+    
 
     cli();
     adc = tempvalue;
