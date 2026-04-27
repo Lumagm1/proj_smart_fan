@@ -32,7 +32,7 @@ void fan_power()
         lcd_page();
         _delay_ms(100);
         char input = wait_input();
-        if (input == 'L' || input == 'R')
+        if (input == 'B')
         {
             break;
         }
