@@ -56,7 +56,7 @@ void initTimer4();
 int DC_Fan_data();
 void startFan();
 void stopFan();
-void setFan();
+void setFan(int target_speed);
 int getTach();
 
 //UART Functions (uart.c)

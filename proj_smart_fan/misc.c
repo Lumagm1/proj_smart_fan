@@ -111,7 +111,7 @@ void lcd_page()
             char temp[16];
             float tempF_float = temp_monitor();
             int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
-            sprintf(temp, "Temp %F F", tempF);
+            sprintf(temp, "Temp %d F", tempF);
             lcd_print((unsigned char *)temp);      //Temp Value
         }
         if (get_page_num() == 7)
@@ -138,7 +138,10 @@ void page_action()
             break;
         case 3:
             fan_mode();
-            auto_mode();
+            if (fan_mode == 1) 
+            {
+                auto_mode();
+            }
             break;
         case 4:
             fan_angle();
