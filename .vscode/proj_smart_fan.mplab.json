@@ -18,10 +18,16 @@
                 }
             ],
             "fileSet": "Debug files",
-            "toolchain": "Debug-avr-gcc"
+            "toolchain": "Debug-avr-gcc",
+            "userVariables": "pickit-uservariables"
         }
     ],
     "propertyGroups": [
+        {
+            "name": "pickit-uservariables",
+            "type": "uservariables",
+            "properties": {}
+        },
         {
             "name": "Debug-avr-gcc",
             "type": "toolchain",
