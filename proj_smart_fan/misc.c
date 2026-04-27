@@ -109,7 +109,7 @@ void lcd_page()
             lcd_print(prompt10); // Temp
             lcd_gotoxy(1, 2);
             char temp[16];
-            float tempF_float = read_temp();
+            float tempF_float = temp_monitor();
             int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
             sprintf(temp, "Temp %F F", tempF);
             lcd_print((unsigned char *)temp);      //Temp Value
@@ -138,6 +138,7 @@ void page_action()
             break;
         case 3:
             fan_mode();
+            auto_mode();
             break;
         case 4:
             fan_angle();

@@ -41,7 +41,6 @@ uint8_t data_joystick_button();
 
 
 // Temperature Sensor (adc.c)
-float read_temp();
 float temp_monitor();
 
 // Servo Motor (pwm.c)
@@ -77,6 +76,7 @@ void i2c_stop();
 
 //misc functions (misc.c)
 char wait_input(void);
+void auto_mode(void);
 int get_servo_lvl();
 int get_fan_lvl();
 int get_page_num(void);

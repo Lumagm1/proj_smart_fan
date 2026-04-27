@@ -73,6 +73,31 @@ void fan_mode()
     }
 }
 
+void auto_mode()
+{
+    if (power_mode == 1 && fan_modes == 1) 
+    {
+        float tempF_float = temp_monitor();
+        int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
+        if (tempF < 70) {
+            setFan(25); // 25% speed
+            setServoAngle(45); // 45 degree angle
+        } else if (tempF < 80) {
+            setFan(50); // 50% speed
+            setServoAngle(90); // 90 degree angle
+        } else if (tempF < 90) {
+            setFan(75); // 75% speed
+            setServoAngle(135); // 135 degree angle
+        } else {
+            setFan(100); // 100% speed
+            setServoAngle(180); // 180 degree angle
+        }
+    } else {
+        setFan(0); // Turn off fan
+        setServoAngle(0); // Set servo to default position
+    }
+
+}
 //page 4
 int get_servo_lvl(void)
 {
@@ -209,6 +234,7 @@ void fan_speed()
     }
 }
 
+//page 6
 void fan_temp()
 {
     init_ADC(1); // Switch ADC to temperature sensor mode
