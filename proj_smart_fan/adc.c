@@ -64,7 +64,7 @@ float temp_monitor() {
  	float adc = tempvalue;
 
     float voltage_mV = adc * (5000.0 / 1024.0);
-    float temp_C = voltage_mV / 10.0;
+    float temp_C = (voltage_mV - 500.0) / 10.0;;
     float temp_F = (temp_C * 9.0 / 5.0) + 32.0;
 
     return temp_F;

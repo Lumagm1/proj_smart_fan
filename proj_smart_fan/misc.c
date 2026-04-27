@@ -12,8 +12,6 @@
  
  static int page_count = 1;
 
-
-
 void page_nav(int count)
 {
     page_count += count;
@@ -31,15 +29,6 @@ int get_page_num(void)
 {
     return page_count;
 }
-
-
-
-
-
-
-
-
-
 
 char wait_input(void) {
     Direction prev = CENTER;
