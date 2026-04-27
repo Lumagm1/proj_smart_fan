@@ -151,3 +151,20 @@ void fan_speed()
     }
 }
 
+void fan_temp()
+{
+    init_ADC(1); // Switch ADC to temperature sensor mode
+    while (1)
+    {
+        lcd_clear();
+        lcd_page();
+        _delay_ms(2000);
+        char input = wait_input();
+        if (input == 'B')
+        {
+            init_ADC(0); // Switch back to joystick mode before exiting
+            break;
+        }
+    }
+}
+

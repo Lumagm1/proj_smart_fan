@@ -7,7 +7,7 @@
 #include <avr/interrupt.h>
 
 #define PAGE_MIN 1
-#define PAGE_MAX 6
+#define PAGE_MAX 7
 
  
  static int page_count = 1;
@@ -144,7 +144,7 @@ void page_action()
         case 5:
             fan_speed();
         case 6:
-            break; // fan_temp();
+            fan_temp(); // fan_temp();
         case 7:
             break; // fan_speed_monitor();
         default:
