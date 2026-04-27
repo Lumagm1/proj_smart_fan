@@ -141,8 +141,8 @@ ISR(ADC_vect) {
 		discard_sample = 1; // Discard the next sample to allow the channel switch to take effect
 	}
 	else if (channel == 2) {
-		tempvalue = ADC;	// only read the high value for 10 bit
-	
+		tempvalue = ADCL;	// only read the high value for 8 bit
+		tempvalue |= ((uint16_t)ADCH << 8);
 	}
 }
 
