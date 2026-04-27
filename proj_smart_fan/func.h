@@ -66,7 +66,7 @@ void putChar(unsigned char c);
 void putStr(char *str);
 
 
-
+ // I2C Protocol function for LCD display
  void i2c(unsigned char data, unsigned char address);
  void i2c_init();
  void i2c_start();

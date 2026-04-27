@@ -111,16 +111,18 @@ void lcd_page()
             lcd_gotoxy(1, 1);
             lcd_print(prompt10); // Temp
             lcd_gotoxy(1, 2);
-            char buffer[16];
-            sprintf(buffer, "Temp %f F", read_temp());
-            lcd_print(buffer);      //Temp Value
+            char temp[16];
+            sprintf(temp, "Temp %f F", read_temp());
+            lcd_print(temp);      //Temp Value
         }
         if (get_page_num() == 7)
         {
             lcd_gotoxy(1, 1);
             lcd_print(prompt11); // Fan RPM Monitor
             lcd_gotoxy(1, 2);
-            lcd_print(prompt12);      //Temp Value
+            char rpm[16];
+            sprintf(rpm, "RPM %d", get_tach());
+            lcd_print(rpm);      //RPM
         }
 }
 
