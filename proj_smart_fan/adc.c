@@ -11,13 +11,17 @@
 	volatile uint16_t tempvalue ; // Global variable to store the ADC value, volatile because it's
 
 void init_ADC(unsigned char identifier) {
-	channel = identifier; // Store the input mode (0 for joystick, 1 for temperature sensor)
 	ADMUX = 0;
 	ADMUX |= (1 << REFS0);									// Use AVcc as the reference
 	ADMUX |= (0 << ADLAR);									// Right-align for 10-bit resolution
-	if (channel == 1) {
-		ADMUX |= 2;											// Select ADC2 for temperature sensor
-	}								// Right-align for 10-bit resolution
+
+	if (identifier == 0) {
+		channel = 0;										// Start joystick on X axis (ADC0)
+		ADMUX |= 0;											// Select ADC0
+	} else {
+		channel = 2;										// Temp mode — channel 2 stops joystick cycling in ISR
+		ADMUX |= 2;											// Select ADC2 for temp sensor
+	}					// Right-align for 10-bit resolution
 	ADCSRA = 0;
 	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 	// 128 prescale for 16 MHz
 	ADCSRA |= (1 << ADATE);  								// Set ADC Auto Trigger Enable (ATE)
@@ -57,7 +61,7 @@ float read_temp() {
 
 float temp_monitor() {
 
- 	uint16_t adc = tempvalue;
+ 	float adc = tempvalue;
 
     float voltage_mV = adc * (5000.0 / 1024.0);
     float temp_C = voltage_mV / 10.0;
