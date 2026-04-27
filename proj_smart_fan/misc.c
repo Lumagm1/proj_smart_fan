@@ -138,7 +138,7 @@ void page_action()
             break;
         case 3:
             fan_mode();
-            if (fan_mode == 1) 
+            if (get_fan_mode() == 1) 
             {
                 auto_mode();
             }
