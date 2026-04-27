@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
+
 	volatile uint8_t channel = 0; // ADC0 for X-axis, ADC1 for Y-axis
 	volatile uint16_t x_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
 	volatile uint16_t y_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
