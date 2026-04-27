@@ -57,6 +57,7 @@ int DC_Fan_data();
 void startFan();
 void stopFan();
 void setFan();
+int getTach();
 
 //UART Functions (uart.c)
 void initUART();
