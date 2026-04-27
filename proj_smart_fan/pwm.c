@@ -59,9 +59,10 @@ void stopFan() {
 	OCR3B = 0;
 }
 
-void setFan(int target) {
-	targetSpeed = target;
-	OCR3B = target * 6.39 * fanON;
+//set fan speed from 0% 25% 50% 75% 100% using 0-4
+void setFan(int target) { 
+	targetSpeed = target * 0.25;
+	OCR3B = targetSpeed * 6.39 * fanON;
 }
 
 int getTach() {
