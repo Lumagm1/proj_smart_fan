@@ -30,9 +30,9 @@ void fan_power()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(2000);
+        _delay_ms(100);
         char input = wait_input();
-        if (input == 'B')
+        if (input == 'L' || input == 'R')
         {
             break;
         }
@@ -60,13 +60,13 @@ void fan_mode()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(2000);
+        _delay_ms(100);
         char input = wait_input();
         if (input == 'B')
         {
             break;
         }
-        else if (input == 'L' || input == 'R')
+        else if (input == 'U' || input == 'D')
         {
             fan_modes = !fan_modes;
         }
@@ -84,13 +84,13 @@ void fan_angle()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(2000);
+        _delay_ms(100);
         char input = wait_input();
         if (input == 'B')
         {
             break;
         }
-        else if (input == 'L' || input == 'R')
+        else if (input == 'U' || input == 'D')
         {
             servo_angle_count--;
             if (servo_angle_count < FAN_ANGLE_MIN)
@@ -110,7 +110,6 @@ void fan_angle()
                 // put servo angle function here with servo_angle_count as input/argument
             }
         }
-        
     }
 }
 
@@ -127,13 +126,13 @@ void fan_speed()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(2000);
+        _delay_ms(100);
         char input = wait_input();
         if (input == 'B')
         {
             break;
         }
-        else if (input == 'L' || input == 'R')
+        else if (input == 'U' || input == 'D')
         {
             fan_speed_count--;
             if (fan_speed_count < FAN_SPEED_MIN)
@@ -163,7 +162,7 @@ void fan_temp()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(2000);
+        _delay_ms(100);
         char input = wait_input();
         if (input == 'B')
         {

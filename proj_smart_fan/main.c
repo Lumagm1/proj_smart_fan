@@ -28,12 +28,13 @@ int main(void) {
         else if (input == 'R')
         {
             page_nav(1);
+            
         }
         else if (input == 'L')
         {
             page_nav(-1);
         }
-        _delay_ms(200);
+        _delay_ms(100);
     }
     
     

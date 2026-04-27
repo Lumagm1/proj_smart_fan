@@ -52,6 +52,8 @@ char wait_input(void) {
         Direction cur = get_js_direction(data_joystick_X(), data_joystick_Y());
         if (prev == CENTER && cur == RIGHT) return 'R';
         if (prev == CENTER && cur == LEFT)  return 'L';
+        if (prev  == CENTER  &&  cur == UP)    return 'U';
+        if (prev == CENTER && cur == DOWN)  return 'D';
         prev = cur;
         _delay_ms(30);
     }
@@ -141,14 +143,19 @@ void page_action()
             break;
         case 2:
             fan_power();
+            break;
         case 3:
             fan_mode();
+            break;
         case 4:
             fan_angle();
+            break;
         case 5:
             fan_speed();
+            break;
         case 6:
             fan_temp(); // fan_temp();
+            break;
         case 7:
             break; // fan_speed_monitor();
         default:
