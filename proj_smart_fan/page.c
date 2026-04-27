@@ -66,7 +66,7 @@ void fan_mode()
         {
             break;
         }
-        else if (input == 'U' || input == 'D')
+        else if (input == 'L' || input == 'R')
         {
             fan_modes = !fan_modes;
         }
