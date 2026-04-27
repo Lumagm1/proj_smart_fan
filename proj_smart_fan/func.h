@@ -10,24 +10,24 @@
 #define LCD_BL (1 << 3)
 
 // Function prototypes
+//--------------------------------------------------------------------------------------------------------//
 
-// LCD Functions
+// LCD Functions (lcd.c)
 void lcdCommanda (unsigned char cmnd);
 void lcdData(unsigned char data);
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);  
 void lcd_print(unsigned char * str);
 void lcd_clear();
-
+//LCD I2C functions (lcd.c)
 void lcd_expander_write(int data);
 void pulse_enable(int data);
 void lcd_write4bits(int data);
 void lcd_send(int value,int rs);
 
 
-// Joystick Functions
-typedef enum {UP,DOWN,LEFT,RIGHT,CENTER
-} Direction;
+// Joystick Functions (adc.c)
+typedef enum {UP,DOWN,LEFT,RIGHT,CENTER} Direction;
 void init_ADC(unsigned char identifier);
 void stop_ADC();
 void start_temp_ADC();
@@ -40,55 +40,50 @@ void init_joystick_button();
 uint8_t data_joystick_button();
 
 
-// Temperature Sensor
+// Temperature Sensor (adc.c)
 uint16_t read_temp();
 float temp_monitor();
 
-// Servo Motor 
+// Servo Motor (pwm.c)
 void init_Servo_IO();
 void initTimer1();
 void setServoAngle(double angle);
 
-//DC Fan Motor
+//DC Fan Motor (pwm.c)
 void init_DC_IO();
 void initTimer3();
 void initTimer4();
 int DC_Fan_data();
-
 void startFan();
 void stopFan();
 void setFan();
 
-
+//UART Functions (uart.c)
 void initUART();
 unsigned char getChar();
 void putChar(unsigned char c);
 void putStr(char *str);
 
 
- // I2C Protocol function for LCD display
- void i2c(unsigned char data, unsigned char address);
- void i2c_init();
- void i2c_start();
- void i2c_address(unsigned char data);
- void i2c_data(unsigned char data);
- void i2c_stop();
+// I2C Protocol function for LCD display (i2c.c)
+void i2c(unsigned char data, unsigned char address);
+void i2c_init();
+void i2c_start();
+void i2c_address(unsigned char data);
+void i2c_data(unsigned char data);
+void i2c_stop();
 
- //misc functions
-
- char wait_input(void);
- int get_servo_lvl();
- int get_fan_lvl();
- void lcd_page();
- void page_nav(int count);
- void page_action();
- int get_page_num(void);
- int get_power_mode();
- int get_fan_mode(void);
- int get_fan_speed(void);
+//misc functions (misc.c)
+char wait_input(void);
+int get_servo_lvl();
+int get_fan_lvl();
+int get_page_num(void);
+int get_power_mode();
+int get_fan_mode(void);
+int get_fan_speed(void);
 
 
-// Page Functions
+// Page Functions   (page.c)
 void fan_power();   // PAGE 2
 void fan_mode();    // PAGE 3
 void fan_angle();   // PAGE 4
@@ -96,6 +91,10 @@ void fan_speed();   // PAGE 5
 void fan_temp();    // PAGE 6
 void fan_speed_monitor();   // PAGE 7
 
+//Page display functions (misc.c)
+void lcd_page();
+void page_nav(int count);
+void page_action();
 
  
 
