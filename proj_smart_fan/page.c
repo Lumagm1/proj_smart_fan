@@ -90,7 +90,7 @@ void fan_angle()
         {
             break;
         }
-        else if (input == 'L')
+        else if (input == 'L' || input == 'R')
         {
             servo_angle_count--;
             if (servo_angle_count < FAN_ANGLE_MIN)
@@ -110,6 +110,7 @@ void fan_angle()
                 // put servo angle function here with servo_angle_count as input/argument
             }
         }
+        
     }
 }
 
@@ -132,7 +133,7 @@ void fan_speed()
         {
             break;
         }
-        else if (input == 'L')
+        else if (input == 'L' || input == 'R')
         {
             fan_speed_count--;
             if (fan_speed_count < FAN_SPEED_MIN)
