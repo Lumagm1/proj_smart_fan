@@ -80,6 +80,7 @@ void fan_angle()
     {
         lcd_clear();
         lcd_page();
+        _delay_ms(2000);
         char input = wait_input();
         if (input == 'B')
         {
@@ -121,6 +122,7 @@ void fan_speed()
     {
         lcd_clear();
         lcd_page();
+        _delay_ms(2000);
         char input = wait_input();
         if (input == 'B')
         {
