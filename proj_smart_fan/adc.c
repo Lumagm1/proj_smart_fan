@@ -62,14 +62,20 @@ float read_temp() {
 float temp_monitor() {
 uint16_t adc;
 
+   uint16_t adc;
+
     cli();
     adc = tempvalue;
     sei();
 
-    float temp_c = adc * 0.48828125;      // 5V ref: 5000/1024/10
-    float temp_f = (temp_c * 1.8) + 32.0;
+    float voltage_mV = adc * (5000.0 / 1024.0);
 
-    return temp_f;
+    // TMP36: 500 mV offset, 10 mV per °C
+    float temp_C = (voltage_mV - 500.0) / 10.0;
+
+    float temp_F = (temp_C * 1.8) + 32.0;
+
+    return temp_F;
 }
 
 Direction get_js_direction(uint16_t x, uint16_t y) {
