@@ -36,7 +36,7 @@ void fan_power()
         {
             break;
         }
-        else if (input == 'L' || input == 'R')
+        else if (input == 'U' || input == 'D')
         {
             power_mode = !power_mode;
             if (power_mode == 1)
