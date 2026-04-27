@@ -30,7 +30,7 @@ void fan_power()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(100);
+        _delay_ms(200);
         char input = wait_input();
         if (input == 'B')
         {
@@ -60,7 +60,7 @@ void fan_mode()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(100);
+        _delay_ms(200);
         char input = wait_input();
         if (input == 'B')
         {
@@ -84,7 +84,7 @@ void fan_angle()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(100);
+        _delay_ms(200);
         char input = wait_input();
         if (input == 'B')
         {
@@ -109,6 +109,9 @@ void fan_angle()
                 }
                 // put servo angle function here with servo_angle_count as input/argument
             }
+            if (power_mode == 1) {
+                    setServoAngle(servo_angle_count * 45); // Assuming servo angle levels correspond to 45, 90, 135, 180 degrees
+                }
         }
     }
 }
@@ -126,7 +129,7 @@ void fan_speed()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(100);
+        _delay_ms(200);
         char input = wait_input();
         if (input == 'B')
         {
@@ -151,6 +154,10 @@ void fan_speed()
                 }
                 // put fan speed function here with fan_speed_count as input/argument
             }
+            fan_speed_count = FAN_SPEED_MIN;
+                if (power_mode == 1) {
+                    setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
+                }
         }
     }
 }
@@ -162,7 +169,7 @@ void fan_temp()
     {
         lcd_clear();
         lcd_page();
-        _delay_ms(100);
+        _delay_ms(200);
         char input = wait_input();
         if (input == 'B')
         {
