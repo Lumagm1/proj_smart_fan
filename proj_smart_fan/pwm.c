@@ -118,7 +118,6 @@ ISR(TIMER4_COMPA_vect) {
 		currentAngle += delta;
 	}
 	OCR1A = (int)(500.0 + ((currentAngle / 180.0) * 2000.0));
-	PORTB ^= (1 << PINB5);
 	/*
 	putStr("\r\nFan Speed ");
 	putChar((uint8_t)(temp/1000) + '0');
