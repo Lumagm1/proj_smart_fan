@@ -8,20 +8,16 @@
 	volatile uint16_t y_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
 	volatile uint8_t discard_sample = 0; //
 	
-	volatile uint8_t tempvalue ; // Global variable to store the ADC value, volatile because it's
+	volatile uint16_t tempvalue ; // Global variable to store the ADC value, volatile because it's
 
 void init_ADC(unsigned char identifier) {
 	channel = identifier; // Store the input mode (0 for joystick, 1 for temperature sensor)
-	if (channel == 0) {
-		// Initialize ADC for joystick
-		ADMUX = 0;	// use ADC0
-	} else if (channel == 1) {
-		// Initialize ADC for temperature sensor
-		ADMUX = 2;	// use ADC2
-	}
 	ADMUX = 0;
 	ADMUX |= (1 << REFS0);									// Use AVcc as the reference
 	ADMUX |= (0 << ADLAR);									// Right-align for 10-bit resolution
+	if (channel == 1) {
+		ADMUX |= 2;											// Select ADC2 for temperature sensor
+	}								// Right-align for 10-bit resolution
 	ADCSRA = 0;
 	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 	// 128 prescale for 16 MHz
 	ADCSRA |= (1 << ADATE);  								// Set ADC Auto Trigger Enable (ATE)
