@@ -55,14 +55,10 @@ uint16_t data_joystick_Y() {
 	return y_value; // Return the latest Y-axis value
 }
 
-float read_temp() {
-	return temp_monitor(); // Return the latest temperature value
-}
+
 
 float temp_monitor() {
 uint16_t adc;
-
-    
 
     cli();
     adc = tempvalue;
