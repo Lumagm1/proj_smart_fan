@@ -62,10 +62,10 @@ float temp_monitor() {
 
     // Convert ADC reading to millivolts
     // AVcc assumed to be 5.0V = 5000 mV
-    float voltage_mV = tempvalue * (5000.0 / 1024.0);
+    float temp_f = tempvalue * (5000.0 / 1024.0);
 
     // LM35 = 10 mV per degree Celsius
-    float temp_f = tempvalue / 10.0;
+     temp_f = tempvalue / 10.0;
 
     return temp_f;
 }
