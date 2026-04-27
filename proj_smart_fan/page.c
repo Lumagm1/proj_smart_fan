@@ -154,7 +154,7 @@ void fan_speed()
                 }
                 // put fan speed function here with fan_speed_count as input/argument
             }
-            fan_speed_count = FAN_SPEED_MIN;
+            
                 if (power_mode == 1) {
                     setFan(fan_speed_count * 25); // Assuming fan speed levels correspond to 25%, 50%, 75%, 100%
                 }
