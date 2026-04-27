@@ -11,6 +11,14 @@
 
 int main(void) {
 
+    //temp for testing
+    init_DC_IO();
+    init_Servo_IO();
+    setFan(100);
+    startFan();
+    setServoAngle(180);
+    //while(1){}
+    //end temp
 
 	lcd_init();  
 	init_ADC(0); // Initialize ADC for joystick

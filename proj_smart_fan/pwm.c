@@ -3,15 +3,16 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
-
-#define MAX_RPM 3000
-#define MIN_RPM 650
+#include <stdlib.h>
 
 uint8_t fanON = 0;
 uint8_t tachCount = 0;
 
 int targetSpeed = 50;
 int tachRPM = 0;
+
+int targetAngle = 0;
+int currentAngle = 0;
 
 void init_DC_IO() {
 	DDRD |= (1 << PIND2);	//PWM Output
@@ -67,9 +68,43 @@ int getTach() {
 	return tachRPM;
 }
 
+
+//Servo Functions
+void init_Servo_IO() {
+	// Timer 1 - PWM output = OC1A = PB1
+	DDRB |= (1 << PINB1); // Set PB1 = OC1A as an output
+	DDRB |= (1 << PINB5);
+	initTimer1();
+}
+
+void initTimer1() {
+	TCCR1A |= (1 << COM1A1);	// Non-inverted mode for OC1A
+	TCCR1B |= (1 << WGM13);		// Phase/Frequency Correct mode for OC1A								
+	TCCR1B |= (1 << CS11);		// Clock prescaler = 8, PWM freq = 50Hz
+	ICR1 = 20000;				// TOP value for 50Hz PWM
+	OCR1A = 500;				// Initial duty cycle (0.5ms pulse width = 0 Degrees)
+	TCNT1 = 0;					// Initialize counter
+}
+
+void setServoAngle(double angle) {
+	if (angle < 0) angle = 0;
+	if (angle > 180) angle = 180;
+	targetAngle = angle;
+}
+
 ISR(TIMER4_COMPA_vect) {
 	tachRPM = 30 * (tachCount);
 	tachCount = 0;
+
+	int delta = targetAngle - currentAngle;
+	signed int dir = delta / abs(delta);  
+	if(abs(delta) > 3) {
+		currentAngle += dir * 4;
+	} else if (abs(delta) <= 3) {
+		currentAngle += delta;
+	}
+	OCR1A = (int)(500.0 + ((currentAngle / 180.0) * 2000.0));
+	PORTB ^= (1 << PINB5);
 	/*
 	putStr("\r\nFan Speed ");
 	putChar((uint8_t)(temp/1000) + '0');
