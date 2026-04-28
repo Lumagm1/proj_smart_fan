@@ -9,7 +9,7 @@
             "imageType": "application",
             "imagePath": "./out/proj_smart_fan/Debug.elf",
             "toolProperties": "pickit-tool-base",
-            "tool": "Simulator",
+            "tool": "PICkit Basic",
             "packs": [
                 {
                     "name": "ATmega_DFP",
