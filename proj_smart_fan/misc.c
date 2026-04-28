@@ -138,6 +138,8 @@ void page_action()
             break;
         case 3:
             fan_mode();
+            if (get_fan_mode() == 1 )
+            auto_mode();
             break;
         case 4:
             fan_angle();
