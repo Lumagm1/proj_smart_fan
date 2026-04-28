@@ -1,6 +1,7 @@
 #define F_CPU 16000000UL
 #include "func.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <util/delay.h>
 #include <avr/io.h>
@@ -110,8 +111,7 @@ void lcd_page()
             lcd_gotoxy(1, 2);
             char temp[16];
             float tempF_float = temp_monitor();
-            int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
-            sprintf(temp, "Temp %d F", tempF);
+            dtostrf(tempF_float, 4, 1, temp);
             lcd_print((unsigned char *)temp);      //Temp Value
         }
         if (get_page_num() == 7)

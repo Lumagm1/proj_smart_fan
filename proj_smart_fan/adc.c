@@ -8,7 +8,10 @@
 	volatile uint16_t y_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
 	volatile uint8_t discard_sample = 0; //
 	
-	volatile uint16_t tempvalue ; // Global variable to store the ADC value, volatile because it's
+	volatile float tempvalue ; // Global variable to store the ADC value, volatile because it's
+
+	volatile float temphist[256] = {0};
+	volatile uint16_t tempind = 0;
 
 void init_ADC(unsigned char identifier) {
 	ADMUX = 0;
@@ -145,8 +148,13 @@ ISR(ADC_vect) {
 		discard_sample = 1; // Discard the next sample to allow the channel switch to take effect
 	}
 	else if (channel == 2) {
-		tempvalue = ADCL;	// only read the high value for 8 bit
-		tempvalue |= ((uint16_t)ADCH << 8);
+		float temptemp = 0;
+		temphist[tempind] = ADC;
+		if(tempind >= 3) {tempind = 0;} else {tempind++;}
+		for(uint8_t i = 0; i < 4; i++) {
+			temptemp += temphist[i];
+		}
+		tempvalue = temptemp / 4.0;
 	}
 }
 
