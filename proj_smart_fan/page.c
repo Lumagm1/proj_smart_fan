@@ -77,11 +77,11 @@ void auto_mode()
 {
     if (power_mode == 1 && fan_modes == 1) 
     {
-        adc_init(1); // Switch ADC to temperature sensor mode
+        init_ADC(1); // Switch ADC to temperature sensor mode
         servoOscilate(1);
         float tempF_float = temp_monitor();
         int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
-        
+        init_ADC(0); // Switch back to joystick mode after reading temperature
         if (tempF <= 70) {
             setFan(25); // 25% speed
             setServoAngle(90); // 45 degree angle
