@@ -82,6 +82,7 @@ void auto_mode()
         int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
         if (tempF <= 70) {
             setFan(25); // 25% speed
+<<<<<<< HEAD
             fan_speed_count = 1;
             servo_angle_count = 2;
             servoOscilate(0);
@@ -97,6 +98,17 @@ void auto_mode()
             fan_speed_count = 3;
             servo_angle_count = 3;
             servoOscilate(0);
+=======
+            servoOscilate(1);
+            setServoAngle(90); // 45 degree angle
+        } else if (tempF <= 73) {
+            setFan(50); // 50% speed
+            servoOscilate(1);
+            setServoAngle(90); // 90 degree angle
+        } else if (tempF <= 76) {
+            setFan(75); // 75% speed
+            servoOscilate(1);
+>>>>>>> 2f087b5bbe7244e6b1541d7b7852d9e5285b3ba9
             setServoAngle(90); // 135 degree angle
         } else {
             setFan(100); // 100% speed
@@ -107,8 +119,13 @@ void auto_mode()
         }
     } else {
         setFan(0); // Turn off fan
+<<<<<<< HEAD
         fan_power = 0;
         setServoAngle(0); // Set servo to default position
+=======
+        servoOscilate(0);
+        setServoAngle(90); // Set servo to default position
+>>>>>>> 2f087b5bbe7244e6b1541d7b7852d9e5285b3ba9
     }
 
 }
