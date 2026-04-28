@@ -96,16 +96,17 @@ void setServoAngle(double angle) {
 
 void servoOscilate(uint8_t osc) {
 	oscillate = osc;
+	targetAngle = 135;
 }
 
 ISR(TIMER4_COMPA_vect) {
 	tachRPM = 30 * (tachCount);
 	tachCount = 0;
 
-	if(oscillate == 1 && currentAngle == 180) {
-		targetAngle = 0;
-	} else if(oscillate == 1 && currentAngle == 0) {
-		targetAngle = 180;
+	if(oscillate == 1 && currentAngle >= 135) {
+		targetAngle = 45;
+	} else if(oscillate == 1 && currentAngle <= 45) {
+		targetAngle = 135;
 	}
 
 	int delta = targetAngle - currentAngle;
