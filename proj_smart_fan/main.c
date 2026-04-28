@@ -16,6 +16,10 @@ int main(void) {
     init_DC_IO();
     init_Servo_IO();
     while (1){
+        if (get_fan_mode() == 1) 
+            {
+                auto_mode();
+            }
         lcd_clear();
         lcd_page();
         char input = wait_input();

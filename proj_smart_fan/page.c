@@ -13,8 +13,8 @@
 
 
 
-static int power_mode = 0;
-static int fan_modes = 0;
+static int power_mode = 1;
+static int fan_modes = 1;
 static int servo_angle_count = 2;
 static int fan_speed_count = 1;
 
@@ -78,25 +78,23 @@ void auto_mode()
     if (power_mode == 1 && fan_modes == 1) 
     {
         adc_init(1); // Switch ADC to temperature sensor mode
+        servoOscilate(1);
         float tempF_float = temp_monitor();
         int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
+        
         if (tempF <= 70) {
             setFan(25); // 25% speed
-            servoOscilate(1);
             setServoAngle(90); // 45 degree angle
         } else if (tempF <= 73) {
             setFan(50); // 50% speed
-            servoOscilate(1);
             setServoAngle(90); // 90 degree angle
         } else if (tempF <= 76) {
             setFan(75); // 75% speed
-            servoOscilate(1);
             setServoAngle(90); // 135 degree angle
         } else {
             setFan(100); // 100% speed
             fan_speed_count = 4;
             servo_angle_count = 4;
-            servoOscilate(1);
             //setServoAngle(180); // 180 degree angle
         }
     } else {
