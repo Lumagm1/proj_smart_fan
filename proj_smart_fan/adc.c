@@ -8,7 +8,7 @@
 	volatile uint16_t y_value = 512; // Global variable to store the ADC value, volatile because it's modified in an ISR
 	volatile uint8_t discard_sample = 0; //
 	
-	volatile float tempvalue ; // Global variable to store the ADC value, volatile because it's
+	volatile float tempvalue = 0; // Global variable to store the ADC value, volatile because it's
 
 	volatile float temphist[256] = {0};
 	volatile uint16_t tempind = 0;
