@@ -1,7 +1,8 @@
+#define F_CPU 16000000 // Clock Speed
 #include "func.h"
 #include <avr/io.h>
 #include <util/delay.h>
-#define F_CPU 16000000 // Clock Speed
+
 #define BAUD 9600
 
 void initUART() {
