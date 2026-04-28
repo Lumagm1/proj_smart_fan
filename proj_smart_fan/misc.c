@@ -140,6 +140,11 @@ void page_action()
             fan_mode();
             if (get_fan_mode() == 1 )
             auto_mode();
+            else
+            {
+                servoOscilate(0);
+                setServoAngle(90); // Set servo to default position
+            }
             break;
         case 4:
             fan_angle();
