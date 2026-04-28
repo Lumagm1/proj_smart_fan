@@ -110,9 +110,9 @@ ISR(TIMER4_COMPA_vect) {
 
 	int delta = targetAngle - currentAngle;
 	signed int dir = delta / abs(delta);
-	if(abs(delta) > 3) {
-		currentAngle += dir * 4;
-	} else if (abs(delta) <= 3) {
+	if(abs(delta) > 7) {
+		currentAngle += dir * 8;
+	} else if (abs(delta) <= 7) {
 		currentAngle += delta;
 	}
 	OCR1A = (int)(500.0 + ((currentAngle / 180.0) * 2000.0));
