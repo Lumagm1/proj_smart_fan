@@ -76,7 +76,7 @@ void lcd_page()
             lcd_gotoxy(1, 1);
             lcd_print(prompt3); // Power Fan
             lcd_gotoxy(1, 2);
-            lcd_print(get_power_mode() ? prompt5:prompt4);
+            lcd_print(get_power_mode() ? prompt4:prompt5);
         }
         if (get_page_num() == 3)
         {

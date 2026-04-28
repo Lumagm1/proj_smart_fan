@@ -13,8 +13,8 @@
 
 
 
-static int power_mode = 1;
-static int fan_modes = 1;
+static int power_mode = 0; // 0 for off, 1 for on
+static int fan_modes = 1; // 0 for manual, 1 for auto
 static int servo_angle_count = 2;
 static int fan_speed_count = 1;
 
@@ -75,7 +75,7 @@ void fan_mode()
 
 void auto_mode()
 {
-    if (power_mode == 1 && fan_modes == 1) 
+    if (fan_modes == 1) 
     {
         init_ADC(1); // Switch ADC to temperature sensor mode
         servoOscilate(1);
