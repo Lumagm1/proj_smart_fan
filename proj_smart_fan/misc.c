@@ -81,7 +81,7 @@ void lcd_page()
         if (get_page_num() == 3)
         {
             lcd_gotoxy(1, 1);
-            lcd_print(get_fan_mode() ? prompt6:prompt7); // Manual or auto
+            lcd_print(get_fan_mode() ? prompt7:prompt6); // Manual or auto
             lcd_gotoxy(1, 2);
             lcd_print(prompt4);
              
@@ -138,6 +138,8 @@ void page_action()
             break;
         case 3:
             fan_mode();
+            if (get_fan_mode() == 1 )
+            auto_mode();
             break;
         case 4:
             fan_angle();
