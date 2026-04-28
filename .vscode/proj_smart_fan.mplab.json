@@ -9,7 +9,7 @@
             "imageType": "application",
             "imagePath": "./out/proj_smart_fan/Debug.elf",
             "toolProperties": "pickit-tool-base",
-            "tool": "PICkit Basic",
+            "tool": "Simulator",
             "packs": [
                 {
                     "name": "ATmega_DFP",
@@ -20,6 +20,24 @@
             "fileSet": "Debug files",
             "toolchain": "Debug-avr-gcc",
             "userVariables": "pickit-uservariables"
+        },
+        {
+            "name": "medbg",
+            "id": "",
+            "device": "ATmega328PB",
+            "imageType": "application",
+            "imagePath": "./out/proj_smart_fan/medbg.elf",
+            "toolProperties": "medbg_tool",
+            "tool": "mEDBG",
+            "packs": [
+                {
+                    "name": "ATmega_DFP",
+                    "vendor": "Microchip",
+                    "version": "3.6.299"
+                }
+            ],
+            "fileSet": "Debug files",
+            "toolchain": "medbg_toolchain"
         }
     ],
     "propertyGroups": [
@@ -30,6 +48,78 @@
         },
         {
             "name": "Debug-avr-gcc",
+            "type": "toolchain",
+            "provider": "microchip.toolchains:avr-gcc@7.3.0",
+            "properties": {
+                "global.relax-branches": false,
+                "global.external-ram-check": false,
+                "compiler.call-prologues": false,
+                "compiler.no-interrupts": false,
+                "compiler.default-char-type": true,
+                "compiler.default-bitfield-type": true,
+                "compiler.optimization-level": "-O0",
+                "compiler.garbage-collect-functions": true,
+                "compiler.garbage-collect-data": true,
+                "compiler.pack-struct": true,
+                "compiler.short-enums": true,
+                "compiler.short-calls": false,
+                "compiler.no-system-directories": false,
+                "compiler.additional-warnings": true,
+                "compiler.extra-warnings": false,
+                "compiler.undefined-identifier": false,
+                "compiler.make-warnings-into-errors": false,
+                "compiler.syntax-only": false,
+                "compiler.strict-ansi": false,
+                "compiler.strict-ansi-errors": false,
+                "compiler.inhibit-all": false,
+                "compiler.verbose": false,
+                "compiler.support-ansi": false,
+                "compiler.save-temps": false,
+                "linker.no-startup-files": false,
+                "linker.no-default-libs": false,
+                "linker.exclude-standard-libraries": false,
+                "linker.omit-symbol-information": false,
+                "linker.no-shared-libraries": false,
+                "linker.generate-map-file": true,
+                "linker.v-printf": false,
+                "linker.remove-unused-sections": true,
+                "linker.rodata-writable": false,
+                "assembler.announce-version": false,
+                "compiler++.call-prologues": false,
+                "compiler++.no-interrupts": false,
+                "compiler++.default-char-type": false,
+                "compiler++.default-bitfield-type": false,
+                "compiler++.optimization-level": "-O0",
+                "compiler++.garbage-collect-functions": true,
+                "compiler++.garbage-collect-data": true,
+                "compiler++.pack-struct": false,
+                "compiler++.short-enums": false,
+                "compiler++.short-calls": false,
+                "compiler++.no-system-directories": false,
+                "compiler++.preprocess-only": false,
+                "compiler++.additional-warnings": false,
+                "compiler++.undefined-identifier": false,
+                "compiler++.make-warnings-into-errors": false,
+                "compiler++.syntax-only": false,
+                "compiler++.strict-ansi": false,
+                "compiler++.strict-ansi-errors": false,
+                "compiler++.inhibit-all": false,
+                "compiler++.verbose": false,
+                "compiler++.support-ansi": false,
+                "compiler++.save-temps": false,
+                "linker.input-libraries": "m",
+                "compiler.appendMe": [
+                    "-g2"
+                ],
+                "global.omit-pack-options": "true",
+                "global.user-pack-include": [
+                    "C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/include"
+                ],
+                "global.user-pack-device-support": "C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328pb"
+            }
+        },
+        {
+            "name": "medbg_toolchain",
             "type": "toolchain",
             "provider": "microchip.toolchains:avr-gcc@7.3.0",
             "properties": {
@@ -180,12 +270,24 @@
             }
         },
         {
+            "name": "medbg_tool",
+            "type": "tool",
+            "properties": {
+                "programoptions.eraseb4program": true,
+                "programoptions.preserveeeprom": true,
+                "communication.interface": "isp",
+                "communication.speed": "4",
+                "speed": "low",
+                "ProgramSpeed": "Low"
+            }
+        },
+        {
             "name": "pickit-tool-base",
             "type": "tool",
             "properties": {
                 "programoptions.eraseb4program": true,
                 "programoptions.preserveeeprom": true,
-                "communication.interface": "ISP",
+                "communication.interface": "isp",
                 "communication.speed": "4",
                 "speed": "low",
                 "ProgramSpeed": "Low"
@@ -217,6 +319,20 @@
         },
         {
             "name": "Debug files",
+            "files": [
+                "proj_smart_fan/adc.c",
+                "proj_smart_fan/pwm.c",
+                "proj_smart_fan/i2c.c",
+                "proj_smart_fan/lcd.c",
+                "proj_smart_fan/main.c",
+                "proj_smart_fan/uart_dbug.c",
+                "proj_smart_fan/misc.c",
+                "proj_smart_fan/page.c"
+            ],
+            "encoding": "utf-8"
+        },
+        {
+            "name": "medbg_files",
             "files": [
                 "proj_smart_fan/adc.c",
                 "proj_smart_fan/pwm.c",

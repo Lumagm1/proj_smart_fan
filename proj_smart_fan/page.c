@@ -79,18 +79,22 @@ void auto_mode()
     {
         float tempF_float = temp_monitor();
         int tempF = (int)(tempF_float + 0.5);   // round to nearest whole number
-        if (tempF < 70) {
+        if (tempF <= 70) {
             setFan(25); // 25% speed
-            setServoAngle(45); // 45 degree angle
-        } else if (tempF < 80) {
+            servoOscilate(0);
+            setServoAngle(90); // 45 degree angle
+        } else if (tempF <= 73) {
             setFan(50); // 50% speed
+            servoOscilate(0);
             setServoAngle(90); // 90 degree angle
-        } else if (tempF < 90) {
+        } else if (tempF <= 76) {
             setFan(75); // 75% speed
-            setServoAngle(135); // 135 degree angle
+            servoOscilate(0);
+            setServoAngle(90); // 135 degree angle
         } else {
             setFan(100); // 100% speed
-            setServoAngle(180); // 180 degree angle
+            servoOscilate(1);
+            //setServoAngle(180); // 180 degree angle
         }
     } else {
         setFan(0); // Turn off fan
