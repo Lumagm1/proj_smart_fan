@@ -14,4 +14,4 @@ There are a lot of extra files here due to us switching from loose C files -> mi
 - "pwm.c"
 - "uart_dbug.c'
 
-- "flowcharts" is the folder that holds the flowchard
+"flowcharts" is the folder that holds the flowchard
